@@ -1,0 +1,9 @@
+{
+	"apps": [
+		{
+			"name": "your-app",
+			"script": "pm2 serve --spa",
+			"interpreter": "none"
+		}
+	]
+}
