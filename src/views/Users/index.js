@@ -8,6 +8,8 @@ import Endpoints from "Endpoints";
 import { Trans } from "react-i18next";
 import { Card, CardContent, CardHeader, Chip } from "@material-ui/core";
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import FloatingActionButton from "components/FloatingActionButton"
 import "./style.scss";
 
 function Users(props) {
@@ -39,19 +41,19 @@ function Users(props) {
         },
         {
             id: "status",
-            label: <Trans>user.status</Trans>,
+            label: <Trans>users.status</Trans>,
         },
         {
             id: "firstname",
-            label: <Trans>user.firstname</Trans>,
+            label: <Trans>users.firstname</Trans>,
         },
         {
             id: "lastname",
-            label: <Trans>user.lastname</Trans>,
+            label: <Trans>users.lastname</Trans>,
         },
         {
             id: "role",
-            label: <Trans>user.role</Trans>,
+            label: <Trans>users.role</Trans>,
         }
     ]
 
@@ -80,15 +82,25 @@ function Users(props) {
     }).reverse()
     return (
         <div >
-                <Card>
-                    <EnhancedTable
-                        headCells={headCells}
-                        rows={rows}
-                        readOnly={false}
-                        rowsPerPage={25}
-                        dense={true}
-                    />
-                </Card>
+            <Card>
+                <EnhancedTable
+                    headCells={headCells}
+                    rows={rows}
+                    readOnly={false}
+                    rowsPerPage={4}
+                    dense={true}
+                    buttons={[
+                        {
+                            helperText: "users.edit",
+                            icon: <EditOutlinedIcon />,
+                            onClick: (banana) => console.log("ciao", banana),
+                            activateOnSingleSelection: true,
+                            activateOnMultipleSelection: false,
+                        }
+                    ]}
+                />
+            </Card>
+            <FloatingActionButton />
         </div>
     );
 }

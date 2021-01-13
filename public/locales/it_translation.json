@@ -42,7 +42,9 @@
 		"search": "Cerca",
 		"filtersList": "Lista Filtri",
 		"nextPage": "Pagina Successiva",
-		"previousPage": "Pagina Precedente"
+		"previousPage": "Pagina Precedente",
+		"elementSelected": "Elemento Selezionato",
+		"elementsSelected": "Elementi Selezionati"
 	},
 	"auth": {
 		"errorOnSocialLogin": "Errore durante l'accesso social",
@@ -160,5 +162,12 @@
 		"module": "Modulo",
 		"message": "Messaggio",
 		"levelHelperText": "Il livello descrive la rilevanza del log"
+	},
+	"users": {
+		"status": "Stato",
+		"firstname": "Nome",
+		"lastname": "Cognome",
+		"role": "Ruolo",
+		"users": "Utenti"
 	}
 }

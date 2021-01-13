@@ -12,19 +12,19 @@ function TopBoxes(props) {
                 <CardHeader title={<Trans>logs.information</Trans>} />
                 <CardContent>
                     <div id="logsInformationContent" className=" flex justify-between">
-                        <Typography component={'span'} gutterbottom>
+                        <Typography component={'span'} >
                             <Box fontWeight='fontWeightBold' display='inline'>
                                 <Trans>logs.startDate</Trans>:{" "}
                             </Box>
                             {startDate}
                         </Typography>
-                        <Typography component={'span'} gutterbottom>
+                        <Typography component={'span'} >
                             <Box fontWeight='fontWeightBold' display='inline'>
                                 <Trans>logs.endDate</Trans>:{" "}
                             </Box>
                             {endDate}
                         </Typography>
-                        <Typography component={'span'} gutterbottom>
+                        <Typography component={'span'} >
                             <Box fontWeight='fontWeightBold' display='inline'>
                                 <Trans>logs.amountOfDataKept</Trans>:{" "}
                             </Box>

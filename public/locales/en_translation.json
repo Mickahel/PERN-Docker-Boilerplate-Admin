@@ -34,7 +34,9 @@
 		"search": "Search",
 		"filtersList": "Filters List",
 		"nextPage": "Next Page",
-		"previousPage": "Previous Page"
+		"previousPage": "Previous Page",
+		"elementSelected": "Element Selected",
+		"elementsSelected": "Elements Selected"
 	},
 	"feedback": {
 		"sendAFeedback": "Send A Feedback",
@@ -160,5 +162,12 @@
 		"module": "Module",
 		"message": "Message",
 		"levelHelperText": "The level describes the relevance of the log"
+	},
+	"users": {
+		"status": "Status",
+		"firstname": "Firstname",
+		"lastname": "Lastname",
+		"role": "Role",
+		"users": "Users"
 	}
 }

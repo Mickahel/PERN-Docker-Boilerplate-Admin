@@ -64,7 +64,7 @@ function Logs(props) {
             },
             module: {
                 value: log.module,
-                component: (text) => <Chip style={{ backgroundColor: log.bgColor }} label={text} />
+                component: (text) => <Chip size="small" style={{ backgroundColor: log.bgColor }} label={text} />
             },
             message: {
                 value: log.message
