@@ -20,6 +20,8 @@ import NotificationsHandler from 'theme/NotificationsHandler'
 const ErrorNotFound = lazy(() => import("views/Placeholders/ErrorNotFound"));
 const Home = lazy(() => import("views/Home"));
 const Dashboard = lazy(() => import("views/Dashboard"));
+const Logs = lazy(() => import("views/Logs"));
+const Users = lazy(() => import("views/Users"));
 
 function App(props) {
   const userContext = useContext(UserContext);
@@ -84,6 +86,8 @@ function App(props) {
         <NotificationsHandler />
         <Switch>
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/users" component={Users} />
+          <Route exact path="/logs" component={Logs} />
           <Route path="/account*" exact component={Account} />
           <Route exact path="/" component={Home} />
           <Route component={ErrorNotFound} />

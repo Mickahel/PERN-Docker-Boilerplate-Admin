@@ -148,5 +148,17 @@
 	},
 	"tos": {
 		"termsOfService": "Terms of Service"
+	},
+	"logs": {
+		"logs": "Logs",
+		"information": "Information",
+		"startDate": "Start Date",
+		"endDate": "End Date",
+		"amountOfDataKept": "Amount of data kept",
+		"days": "Days",
+		"level": "Level",
+		"module": "Module",
+		"message": "Message",
+		"levelHelperText": "The level describes the relevance of the log"
 	}
 }

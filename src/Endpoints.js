@@ -12,7 +12,8 @@ const Endpoints = {
   user: {
     profile: "/v1/app/user/info", // ? GET
     editProfile: "/v1/app/user/edit", // ? GET
-    disableAccount: "v1/app/user/disable" // ? DELETE
+    disableAccount: "v1/app/user/disable", // ? DELETE
+    getAll: "v1/admin/user/info/all" // ? GET
   },
   debug: {
     status: "/v1/debug/status/:status", // ? GET
@@ -22,6 +23,9 @@ const Endpoints = {
   },
   pushNotification: {
     sendToken: "/v1/app/pushNotification/:token" // ? POST
+  },
+  logs: {
+    getAll: "/v1/admin/logs/" // ? GET
   }
 };
 
