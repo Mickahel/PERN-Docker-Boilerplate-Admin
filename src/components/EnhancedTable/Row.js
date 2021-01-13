@@ -49,7 +49,10 @@ const createTableCell = (element) => {
     <span className="singleCell">
       <span className="singleCellText">
         {element.component
-          ? element.component(`${value} ${_.get("symbol", element, "")}`)
+          ?
+          typeof onClick === 'function'
+            ? element.component(`${value} ${_.get("symbol", element, "")}`)
+            : element.component
           : <>{value}
             {element.symbol}</>}
 

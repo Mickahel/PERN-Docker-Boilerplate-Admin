@@ -20,6 +20,7 @@ const Endpoints = {
   },
   feedback: {
     sendNew: "/v1/app/feedback/create", // ? POST
+    getAll: "/v1/admin/feedback/all", // ? GET
   },
   pushNotification: {
     sendToken: "/v1/app/pushNotification/:token" // ? POST

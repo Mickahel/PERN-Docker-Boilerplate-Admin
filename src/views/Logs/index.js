@@ -49,6 +49,10 @@ function Logs(props) {
             id: "message",
             label: <Trans>logs.message</Trans>,
         },
+        {
+            id: "object",
+            label: <Trans>logs.object</Trans>,
+        },
     ]
 
 
@@ -64,10 +68,13 @@ function Logs(props) {
             },
             module: {
                 value: log.module,
-                component: (text) => <Chip size="small" style={{ backgroundColor: log.bgColor }} label={text} />
+                component: <Chip size="small" style={{ backgroundColor: log.bgColor }} label={log.module} />
             },
             message: {
                 value: log.message
+            },
+            object: {
+                value: log.object
             },
         }
     }).reverse()

@@ -11,10 +11,12 @@ import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import FloatingActionButton from "components/FloatingActionButton"
 import "./style.scss";
+import { useHistory } from "react-router-dom";
 
-function Users(props) {
+function UsersList(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, data, fetch } = useFetch();
+    const history = useHistory();
 
     const loadData = async () => {
         try {
@@ -22,7 +24,6 @@ function Users(props) {
                 url: Endpoints.user.getAll,
                 method: "GET",
             })
-            console.log(result)
         }
         catch (e) {
 
@@ -40,16 +41,16 @@ function Users(props) {
             label: "Email",
         },
         {
-            id: "status",
-            label: <Trans>users.status</Trans>,
-        },
-        {
             id: "firstname",
             label: <Trans>users.firstname</Trans>,
         },
         {
             id: "lastname",
             label: <Trans>users.lastname</Trans>,
+        },
+        {
+            id: "status",
+            label: <Trans>users.status</Trans>,
         },
         {
             id: "role",
@@ -79,7 +80,7 @@ function Users(props) {
             },
 
         }
-    }).reverse()
+    })
     return (
         <div >
             <Card>
@@ -87,22 +88,22 @@ function Users(props) {
                     headCells={headCells}
                     rows={rows}
                     readOnly={false}
-                    rowsPerPage={4}
+                    rowsPerPage={15}
                     dense={true}
                     buttons={[
                         {
-                            helperText: "users.edit",
+                            tooltip: "users.edit",
                             icon: <EditOutlinedIcon />,
-                            onClick: (banana) => console.log("ciao", banana),
+                            onClick: (id) => history.push(`/users-management-system/${id}`),
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,
                         }
                     ]}
                 />
             </Card>
-            <FloatingActionButton />
+            <FloatingActionButton href="/users-management-system/new" />
         </div>
     );
 }
 
-export default Users;
+export default UsersList;

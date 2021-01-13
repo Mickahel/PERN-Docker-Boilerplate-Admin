@@ -168,6 +168,7 @@
 		"firstname": "Firstname",
 		"lastname": "Lastname",
 		"role": "Role",
-		"users": "Users"
+		"users": "Users",
+		"edit": "Edit"
 	}
 }

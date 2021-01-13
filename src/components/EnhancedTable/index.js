@@ -195,11 +195,12 @@ function EnhancedTable(props) {
 
   const createRowsPerPageOptions = (rows) => {
     let rowsPerPageOptions = [];
+    rowsPerPageOptions.push(props.rowsPerPage)
     if (rows.length >= 5) rowsPerPageOptions.push(5);
     if (rows.length >= 10) rowsPerPageOptions.push(10);
     if (rows.length >= 25) rowsPerPageOptions.push(25);
 
-    return rowsPerPageOptions;
+    return [...new Set(rowsPerPageOptions)].sort((a, b) => a - b);
   };
 
   const handleRequestSort = (event, property) => {
