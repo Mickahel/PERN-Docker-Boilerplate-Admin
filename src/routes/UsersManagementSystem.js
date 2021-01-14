@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import ErrorNotFound from "views/Placeholders/ErrorNotFound";
+const ErrorNotFound = lazy(() => import("views/Placeholders/ErrorNotFound"));
 const UsersList = lazy(() => import("views/Users/UsersList"));
 const UserForm = lazy(() => import("views/Users/UserForm"));
 

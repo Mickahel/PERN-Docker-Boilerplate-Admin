@@ -9,11 +9,14 @@ import TopBoxes from "./TopBoxes"
 import { Trans } from "react-i18next";
 import { Card, CardContent, CardHeader, Chip } from "@material-ui/core";
 import "./style.scss";
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import { useHistory } from "react-router-dom";
 
-function Logs(props) {
+
+function LogsList(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, data, fetch } = useFetch();
-
+    const history = useHistory();
     const loadData = async () => {
         try {
             const result = await fetch({
@@ -59,7 +62,7 @@ function Logs(props) {
     if (loading) return <RoundLoader />
     const rows = data.logs.map(log => {
         return {
-            id: log.timestamp,
+            id: log.id,
             timestamp: {
                 value: log.timestamp
             },
@@ -71,10 +74,12 @@ function Logs(props) {
                 component: <Chip size="small" style={{ backgroundColor: log.bgColor }} label={log.module} />
             },
             message: {
-                value: log.message
+                value: log.message,
+                maxCharacters:100
             },
             object: {
-                value: log.object
+                value: log.object,
+                maxCharacters:100
             },
         }
     }).reverse()
@@ -90,9 +95,17 @@ function Logs(props) {
                     <EnhancedTable
                         headCells={headCells}
                         rows={rows}
-                        readOnly
                         rowsPerPage={25}
                         dense
+                        buttons={[
+                        {
+                            tooltip: "logs.inspect",
+                            icon: <SearchOutlinedIcon />,
+                            onClick: (id) => history.push(`/logs/${id}`),
+                            activateOnSingleSelection: true,
+                            activateOnMultipleSelection: false,
+                        }
+                    ]}
                     />
                 </Card>
             </div>
@@ -100,4 +113,4 @@ function Logs(props) {
     );
 }
 
-export default Logs;
+export default LogsList;

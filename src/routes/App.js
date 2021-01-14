@@ -8,9 +8,6 @@ import React, {
 } from "react";
 import { Route, Switch } from "react-router-dom";
 import Theme from "theme";
-import Account from "./Account";
-import UsersManagementSystem from "./UsersManagementSystem"
-import Feedbacks from "./Feedbacks"
 import { UserContext } from "contexts/Providers/UserProvider";
 import { ThemeContext } from "contexts/Providers/ThemeProvider";
 import Endpoints from "Endpoints";
@@ -19,10 +16,15 @@ import RoundLoader from "components/RoundLoader";
 import { useHistory } from "react-router-dom";
 import useFetch from "hooks/useFetch";
 import NotificationsHandler from 'theme/NotificationsHandler'
+
+import Account from "./Account";
+import UsersManagementSystem from "./UsersManagementSystem"
+import Feedbacks from "./Feedbacks"
+import Logs from "./Logs"
 const ErrorNotFound = lazy(() => import("views/Placeholders/ErrorNotFound"));
 const Home = lazy(() => import("views/Home"));
 const Dashboard = lazy(() => import("views/Dashboard"));
-const Logs = lazy(() => import("views/Logs"));
+
 function App(props) {
   const userContext = useContext(UserContext);
   const themeContext = useContext(ThemeContext);
@@ -88,7 +90,7 @@ function App(props) {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/users-management-system*" component={UsersManagementSystem} />
           <Route exact path="/feedbacks*" component={Feedbacks} />
-          <Route exact path="/logs" component={Logs} />
+          <Route exact path="/logs*" component={Logs} />
           <Route path="/account*" exact component={Account} />
           <Route exact path="/" component={Home} />
           <Route component={ErrorNotFound} />

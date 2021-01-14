@@ -34,16 +34,31 @@ const useRowStyles = makeStyles((theme) => ({
   },
 }));
 
-const createTableCell = (element) => {
-  let value;
-  if (typeof element.value === "boolean") {
-    value =
-      element.value === true ? (
+
+const renderValueForCell = (element) =>{
+  if (typeof element.value === "boolean")  return element.value === true ? (
         <CheckCircleOutlinedIcon className="trueIcon" />
       ) : (
           <CancelOutlinedIcon className="falseIcon" />
         );
-  } else value = element.value;
+
+  if (!isNaN(parseFloat(element.value))) {
+
+    if(element.maxCharacters && element.value.length>element.maxCharacters) {
+      const charactersBeforeDot = element.value.split(".")[0].length
+      return parseFloat(element.value).toFixed(
+        element.maxCharacters-charactersBeforeDot>100 ? 100 :  element.maxCharacters-charactersBeforeDot
+      )}
+    return  element.value
+  }
+  if (typeof element.value === "string") {
+    if(element.maxCharacters && element.value.length>element.maxCharacters) return element.value.slice(0,element.maxCharacters)+ "[...]"
+    return  element.value
+  }
+
+}
+const createTableCell = (element) => {
+
 
   let renderedElement = (
     <span className="singleCell">
@@ -51,9 +66,9 @@ const createTableCell = (element) => {
         {element.component
           ?
           typeof onClick === 'function'
-            ? element.component(`${value} ${_.get("symbol", element, "")}`)
+            ? element.component(`${renderValueForCell(element)} ${_.get("symbol", element, "")}`)
             : element.component
-          : <>{value}
+          : <>{renderValueForCell(element)}
             {element.symbol}</>}
 
       </span>
@@ -147,7 +162,8 @@ function Row(props) {
                 align={index == 0 ? "inherit" : "center"}
                 className={classnames(
                   row[element.id].link && index != 0 && "iconPadding",
-                  (dense == true && index == 0 && readOnly == true) && "denseReadOnlyFirstItem"
+                  (dense == true && index == 0 && readOnly == true) && "denseReadOnlyFirstItem",
+                  (dense == true && index == headCells.length-1 && readOnly == true) && "denseReadOnlyLastItem"
                 )}
               >
                 {createTableCell(row[element.id])}

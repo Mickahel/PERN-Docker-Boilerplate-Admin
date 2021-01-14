@@ -17,18 +17,8 @@ import Row from "./Row";
 import EnhancedTableToolbar from "./EnhancedTableToolbar";
 import "./style.scss";
 
-function createRows(rowsToParse, transformRowValues) {
-  if (!transformRowValues) return rowsToParse;
-  let parsedRows = _.cloneDeep(rowsToParse);
-  parsedRows.map((row) => {
-    Object.keys(transformRowValues).map((keyOfObjectToParse) => {
-      console.log(row[keyOfObjectToParse]);
-      row[keyOfObjectToParse].value = transformRowValues[keyOfObjectToParse](
-        row[keyOfObjectToParse].value
-      );
-    });
-  });
-  return parsedRows;
+function createRows(rowsToParse) {
+  return rowsToParse
 }
 
 function descendingComparator(a, b, orderBy) {
@@ -185,10 +175,10 @@ function EnhancedTable(props) {
     setRows(searchedRows);
   };
 
-  let plainRows = createRows(props.rows, props.transformRowValues);
+  let plainRows = createRows(props.rows);
 
   useEffect(() => {
-    setRows(createRows(props.rows, props.transformRowValues));
+    setRows(createRows(props.rows));
   }, []);
 
 

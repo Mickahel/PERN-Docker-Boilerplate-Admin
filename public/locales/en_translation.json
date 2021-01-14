@@ -161,7 +161,8 @@
 		"level": "Level",
 		"module": "Module",
 		"message": "Message",
-		"levelHelperText": "The level describes the relevance of the log"
+		"levelHelperText": "The level describes the relevance of the log",
+		"object": "Object"
 	},
 	"users": {
 		"status": "Status",

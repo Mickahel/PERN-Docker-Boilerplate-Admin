@@ -90,8 +90,6 @@ function FeedbacksList(props) {
                     headCells={headCells}
                     rows={rows}
                     readOnly={false}
-                    rowsPerPage={15}
-                    dense={true}
                     buttons={[
                         {
                             tooltip: "feebacks.inspect",

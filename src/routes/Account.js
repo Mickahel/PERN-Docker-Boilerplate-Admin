@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import ErrorNotFound from "views/Placeholders/ErrorNotFound";
+const ErrorNotFound = lazy(() => import("views/Placeholders/ErrorNotFound"));
 const Profile = lazy(() => import("views/Profile"));
 
 function Account() {

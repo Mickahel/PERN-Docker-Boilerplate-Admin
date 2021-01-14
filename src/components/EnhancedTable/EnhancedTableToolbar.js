@@ -129,7 +129,7 @@ const EnhancedTableToolbar = (props) => {
       )}
       {
         buttons.map(button => {
-          let icon = <Tooltip key={button.tooltip + "tt"} title={<Trans>{button.helperText}</Trans>}>
+          let icon = <Tooltip key={button.tooltip + "tt"} title={<Trans>{button.tooltip}</Trans>}>
             <IconButton
               key={button.tooltip + "ic"}
               onClick={() => { button.onClick(selected) }}>
