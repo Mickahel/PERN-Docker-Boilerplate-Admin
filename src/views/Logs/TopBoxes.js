@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { Trans } from "react-i18next";
 import Box from '@material-ui/core/Box';
+import { DateTime } from "luxon"
 function TopBoxes(props) {
     const { startDate, endDate, amountOfDataKept } = props
     return (
@@ -16,13 +17,13 @@ function TopBoxes(props) {
                             <Box fontWeight='fontWeightBold' display='inline'>
                                 <Trans>logs.startDate</Trans>:{" "}
                             </Box>
-                            {startDate}
+                            {DateTime.fromMillis(startDate).toLocaleString()}
                         </Typography>
                         <Typography component={'span'} >
                             <Box fontWeight='fontWeightBold' display='inline'>
                                 <Trans>logs.endDate</Trans>:{" "}
                             </Box>
-                            {endDate}
+                            {DateTime.fromMillis(endDate).toLocaleString()}
                         </Typography>
                         <Typography component={'span'} >
                             <Box fontWeight='fontWeightBold' display='inline'>

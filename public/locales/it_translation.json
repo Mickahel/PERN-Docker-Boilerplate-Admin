@@ -174,12 +174,13 @@
 		"edit": "Modifica"
 	},
 	"feedbacks": {
-		"feedbacks":"Feedbacks",
-		"description":"Descrizione",
-		"type":"Tipo",
-		"handled":"Gestito",
-		"path":"Path",
-		"createdAt":"Creato Il",
-		"createdBy":"Creato Da"
+		"screenshot": "Screenshot",
+		"feedbacks": "Feedbacks",
+		"description": "Descrizione",
+		"type": "Tipo",
+		"handled": "Gestito",
+		"path": "Path",
+		"createdAt": "Creato Il",
+		"createdBy": "Creato Da"
 	}
 }

@@ -174,12 +174,13 @@
 		"edit": "Edit"
 	},
 	"feedbacks": {
-		"feedbacks":"Feedbacks",
-		"description":"Description",
-		"type":"Type",
-		"handled":"Handled",
-		"path":"Path",
-		"createdAt":"Created At",
-		"createdBy":"Created By"
+		"screenshot": "Screenshot",
+		"feedbacks": "Feedbacks",
+		"description": "Description",
+		"type": "Type",
+		"handled": "Handled",
+		"path": "Path",
+		"createdAt": "Created At",
+		"createdBy": "Created By"
 	}
 }
