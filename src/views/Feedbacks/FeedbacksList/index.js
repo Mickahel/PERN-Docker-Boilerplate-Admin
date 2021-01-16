@@ -13,7 +13,7 @@ import BugReportOutlinedIcon from '@material-ui/icons/BugReportOutlined';
 import EmojiObjectsOutlinedIcon from '@material-ui/icons/EmojiObjectsOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
-
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 function FeedbacksList(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, data, fetch } = useFetch();
@@ -57,6 +57,14 @@ function FeedbacksList(props) {
         {
             id: "createdAt",
             label: <Trans>feedbacks.createdAt</Trans>,
+        },
+                {
+            id: "createdBy",
+            label: <Trans>feedbacks.createdBy</Trans>,
+        },
+                        {
+            id: "screenshot",
+            label: <Trans>feedbacks.screenshot</Trans>,
         }
     ]
 
@@ -73,15 +81,24 @@ function FeedbacksList(props) {
                 value: feedback.description
             },
             handled: {
-                value: feedback.handled
+                value: feedback.handled,
+                onClick: ()=>{console.log(feedback.id)}
             },
             path: {
                 value: feedback.path
             },
             createdAt: {
                 value: feedback.createdAt
+            },
+            createdBy: {
+                value: feedback.user.email,
+                link: `/users-management-system/${feedback.user.id}`
+            },
+            screenshot:{
+                
+                link: process.env.REACT_APP_API_PUBLIC_URL +feedback.screenshotUrl}
             }
-        }
+        
     })
     return (
         <div >
@@ -89,11 +106,10 @@ function FeedbacksList(props) {
                 <EnhancedTable
                     headCells={headCells}
                     rows={rows}
-                    readOnly={false}
                     buttons={[
                         {
-                            tooltip: "feebacks.inspect",
-                            icon: <SearchOutlinedIcon />,
+                            tooltip: "feebacks.delete",
+                            icon: <DeleteOutlineOutlinedIcon />,
                             onClick: (id) => history.push(`/feedbacks/${id}`),
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,

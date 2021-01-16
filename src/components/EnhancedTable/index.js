@@ -16,7 +16,8 @@ import EnhancedTableHead from "./EnhancedTableHead";
 import Row from "./Row";
 import EnhancedTableToolbar from "./EnhancedTableToolbar";
 import "./style.scss";
-
+import TextField from "@material-ui/core/TextField";
+import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
 function createRows(rowsToParse) {
   return rowsToParse
 }
@@ -60,6 +61,7 @@ function createHeadCells(headCells) {
   const enrichedHeadCells = headCells.map((element) => {
     return {
       ...element,
+      label: <Trans>{element.label}</Trans>,
       show: true,
     };
   });
@@ -118,7 +120,9 @@ function EnhancedTable(props) {
     maxHeight,
     singlePage,
     dense,
-    buttons
+    buttons,
+    collapsibleType,
+    collapsibleHeadIconsAndDescription
   } = props;
 
   const classes = useStyles({ maxHeight });
@@ -294,6 +298,8 @@ function EnhancedTable(props) {
               const labelId = `enhanced-table-checkbox-${index}`;
               return (
                 <Row
+                  collapsibleType={collapsibleType}
+                  collapsibleHeadIconsAndDescription={collapsibleHeadIconsAndDescription}
                   labelId={labelId}
                   classes={classes}
                   readOnly={readOnly}
@@ -324,8 +330,10 @@ function EnhancedTable(props) {
           </TableBody>
         </Table>
       </TableContainer>
-      {!singlePage && (
-        <TablePagination
+      {!singlePage && (<>
+        {/*<div className="pages"><MenuBookOutlinedIcon fontSize="small"/> 
+        <TextField type="number" size="small" id="filled-basic" label={<Trans>enhancedTable.page</Trans>} variant="filled" /></div>
+        */}<TablePagination
           backIconButtonText={i18n.t("enhancedTable.previousPage")}
           nextIconButtonText={i18n.t("enhancedTable.nextPage")}
           labelRowsPerPage={i18n.t("enhancedTable.rows")}
@@ -346,7 +354,7 @@ function EnhancedTable(props) {
             return `${from}-${to} ${i18n.t("enhancedTable.of")} ${count !== -1 ? count : `${i18n.t("enhancedTable.moreThan")} ${to}`
               }`;
           }}
-        />
+        /></>
       )}
     </div>
   );
@@ -363,7 +371,12 @@ EnhancedTable.propTypes = {
   rowsPerPage: PropTypes.number,
   singlePage: PropTypes.bool,
   maxHeight: PropTypes.number,
-  dense: PropTypes.bool
+  dense: PropTypes.bool,
+  collapsible: PropTypes.bool,
+  collapsibleTitle: PropTypes.string,
+  collapsibleHeadCells: PropTypes.array,
+  collapsibleHeadIconsAndDescription: PropTypes.array,
+  collapsibleType: PropTypes.oneOf(["TABLE", "INFORMATION"])
 };
 EnhancedTable.defaultProps = {
   title: "",
@@ -374,6 +387,8 @@ EnhancedTable.defaultProps = {
   showSearchbar: true,
   singlePage: false,
   dense: false,
+  collapsible: false,
+  collapsibleType: "TABLE",
   buttons: []
 };
 

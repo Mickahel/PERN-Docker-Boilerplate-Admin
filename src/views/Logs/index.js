@@ -6,10 +6,9 @@ import RoundLoader from "components/RoundLoader";
 import EnhancedTable from "components/EnhancedTable";
 import Endpoints from "Endpoints";
 import TopBoxes from "./TopBoxes"
-import { Trans } from "react-i18next";
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { Card, CardContent, CardHeader, Chip } from "@material-ui/core";
 import "./style.scss";
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { useHistory } from "react-router-dom";
 
 
@@ -37,24 +36,24 @@ function LogsList(props) {
     const headCells = [
         {
             id: "timestamp",
-            label: <Trans>Timestamp</Trans>,
+            label: "Timestamp",
         },
         {
             id: "level",
-            label: <Trans>logs.level</Trans>,
-            helpText: <Trans>logs.levelHelperText</Trans>,
+            label: "logs.level",
+            helpText: "logs.levelHelperText",
         },
         {
             id: "module",
-            label: <Trans>logs.module</Trans>,
+            label: "logs.module",
         },
         {
             id: "message",
-            label: <Trans>logs.message</Trans>,
+            label: "logs.message",
         },
         {
             id: "object",
-            label: <Trans>logs.object</Trans>,
+            label: "logs.object",
         },
     ]
 
@@ -75,12 +74,20 @@ function LogsList(props) {
             },
             message: {
                 value: log.message,
-                maxCharacters:100
+                maxCharacters: 100
             },
             object: {
                 value: log.object,
-                maxCharacters:100
+                maxCharacters: 100
             },
+            collapsible: {
+                message: {
+                    value: log.message,
+                },
+                object: {
+                    value: log.object,
+                },
+            }
         }
     }).reverse()
     return (
@@ -97,15 +104,18 @@ function LogsList(props) {
                         rows={rows}
                         rowsPerPage={25}
                         dense
-                        buttons={[
-                        {
-                            tooltip: "logs.inspect",
-                            icon: <SearchOutlinedIcon />,
-                            onClick: (id) => history.push(`/logs/${id}`),
-                            activateOnSingleSelection: true,
-                            activateOnMultipleSelection: false,
-                        }
-                    ]}
+                        readOnly
+                        collapsible={true}
+                        collapsibleTitle={"logs.details"}
+                        collapsibleType="INFORMATION"
+                        collapsibleHeadCells={headCells}
+                        collapsibleHeadIconsAndDescription={[
+                            {
+                                icon: <SearchOutlinedIcon />,
+                                label: "logs.object",
+                                id: "object"
+                            }
+                        ]}
                     />
                 </Card>
             </div>

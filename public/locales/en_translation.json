@@ -162,7 +162,8 @@
 		"module": "Module",
 		"message": "Message",
 		"levelHelperText": "The level describes the relevance of the log",
-		"object": "Object"
+		"object": "Object",
+		"details": "Details"
 	},
 	"users": {
 		"status": "Status",
@@ -171,5 +172,14 @@
 		"role": "Role",
 		"users": "Users",
 		"edit": "Edit"
+	},
+	"feedbacks": {
+		"feedbacks":"Feedbacks",
+		"description":"Description",
+		"type":"Type",
+		"handled":"Handled",
+		"path":"Path",
+		"createdAt":"Created At",
+		"createdBy":"Created By"
 	}
 }

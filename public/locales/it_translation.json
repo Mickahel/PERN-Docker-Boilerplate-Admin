@@ -152,6 +152,7 @@
 		"termsOfService": "Termini e Condizioni d'Uso"
 	},
 	"logs": {
+		"details": "Dettagli",
 		"logs": "Logs",
 		"information": "Informazioni",
 		"startDate": "Data Iniziale",
@@ -171,5 +172,14 @@
 		"role": "Ruolo",
 		"users": "Utenti",
 		"edit": "Modifica"
+	},
+	"feedbacks": {
+		"feedbacks":"Feedbacks",
+		"description":"Descrizione",
+		"type":"Tipo",
+		"handled":"Gestito",
+		"path":"Path",
+		"createdAt":"Creato Il",
+		"createdBy":"Creato Da"
 	}
 }

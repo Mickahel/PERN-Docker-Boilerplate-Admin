@@ -12,6 +12,10 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import FloatingActionButton from "components/FloatingActionButton"
 import "./style.scss";
 import { useHistory } from "react-router-dom";
+import Avatar from "@material-ui/core/Avatar";
+
+
+
 
 function UsersList(props) {
     const themeContext = useContext(ThemeContext);
@@ -73,7 +77,14 @@ function UsersList(props) {
                 value: user.lastname
             },
             email: {
-                value: user.email
+                value: user.email,
+                component: <span className="flex items-center"> <Avatar
+                className="mt-1 mr-1 mb-1"
+                src={user.profileImageUrl && process.env.REACT_APP_API_PUBLIC_URL +user.profileImageUrl}>
+                </Avatar>
+                {user.email}
+                </span>
+                
             },
             role: {
                 value: user.role
