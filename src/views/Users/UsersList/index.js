@@ -1,13 +1,12 @@
 import React, { useEffect, useContext } from "react";
 import { ThemeContext } from "contexts/Providers/ThemeProvider";
-import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import useFetch from "hooks/useFetch";
 import RoundLoader from "components/RoundLoader";
 import EnhancedTable from "components/EnhancedTable";
 import Endpoints from "Endpoints";
 import { Trans } from "react-i18next";
-import { Card, CardContent, CardHeader, Chip } from "@material-ui/core";
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import { Card } from "@material-ui/core";
+import GroupOutlinedIcon from '@material-ui/icons/GroupOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import FloatingActionButton from "components/FloatingActionButton"
 import "./style.scss";
@@ -34,7 +33,7 @@ function UsersList(props) {
         }
     }
     useEffect(() => {
-        themeContext.setTitle("users.users", <PersonOutlineOutlinedIcon />);
+        themeContext.setTitle("users.users", <GroupOutlinedIcon />);
         loadData()
     }, []);
 
@@ -79,12 +78,12 @@ function UsersList(props) {
             email: {
                 value: user.email,
                 component: <span className="flex items-center"> <Avatar
-                className="mt-1 mr-1 mb-1"
-                src={user.profileImageUrl && process.env.REACT_APP_API_PUBLIC_URL +user.profileImageUrl}>
+                    className="mt-1 mr-1 mb-1"
+                    src={user.profileImageUrl && process.env.REACT_APP_API_PUBLIC_URL + user.profileImageUrl}>
                 </Avatar>
-                {user.email}
+                    {user.email}
                 </span>
-                
+
             },
             role: {
                 value: user.role

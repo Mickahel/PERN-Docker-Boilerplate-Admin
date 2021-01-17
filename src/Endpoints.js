@@ -13,7 +13,8 @@ const Endpoints = {
     profile: "/v1/app/user/info", // ? GET
     editProfile: "/v1/app/user/edit", // ? GET
     disableAccount: "v1/app/user/disable", // ? DELETE
-    getAll: "v1/admin/user/info/all" // ? GET
+    getAll: "v1/admin/user/info/all", // ? GET
+    getById: "v1/admin/user/info/:id" // ? GET
   },
   debug: {
     status: "/v1/debug/status/:status", // ? GET
@@ -21,6 +22,9 @@ const Endpoints = {
   feedback: {
     sendNew: "/v1/app/feedback/create", // ? POST
     getAll: "/v1/admin/feedback/all", // ? GET
+    deleteById: "/v1/admin/feedback/delete/:id", // ? DELETE
+    editById: "/v1/admin/feedback/edit", // ? PUT
+
   },
   pushNotification: {
     sendToken: "/v1/app/pushNotification/:token" // ? POST

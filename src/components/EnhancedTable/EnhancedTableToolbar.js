@@ -8,8 +8,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import { Trans } from "react-i18next";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import TextField from "@material-ui/core/TextField";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -25,11 +23,11 @@ const useToolbarStyles = makeStyles((theme) => ({
     theme.palette.type === "light"
       ? {
         //color: theme.palette.primary.main,
-        height:"68px !important",
+        height: "68px !important",
         backgroundColor: lighten(theme.palette.primary.light, 0.85),
       }
       : {
-        height:"68px !important",
+        height: "68px !important",
         //color: theme.palette.text.primary,
         backgroundColor: theme.palette.primary.dark,
       },

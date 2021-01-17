@@ -61,7 +61,7 @@ function EnhancedTableHead(props) {
         )}
       >
         {!readOnly && (
-          <TableCell padding="checkbox">
+          <TableCell classes={{ root: headClasses.topTableCell }} padding="checkbox">
             <Checkbox
               color="primary"
               indeterminate={numSelected > 0 && numSelected < rowCount}

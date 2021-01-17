@@ -1,22 +1,23 @@
 import React, { useEffect, useContext } from "react";
 import { ThemeContext } from "contexts/Providers/ThemeProvider";
-import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import useFetch from "hooks/useFetch";
 import RoundLoader from "components/RoundLoader";
 import EnhancedTable from "components/EnhancedTable";
 import Endpoints from "Endpoints";
 import { Trans } from "react-i18next";
-import { Card, CardContent, CardHeader, Chip } from "@material-ui/core";
+import { Card } from "@material-ui/core";
 import "./style.scss";
 import { useHistory } from "react-router-dom";
 import BugReportOutlinedIcon from '@material-ui/icons/BugReportOutlined';
 import EmojiObjectsOutlinedIcon from '@material-ui/icons/EmojiObjectsOutlined';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-
+import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
-function FeedbacksList(props) {
+import { DateTime } from "luxon";
+function Feedbacks(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, data, fetch } = useFetch();
+    const { fetch: fetchDeleteFeedback } = useFetch();
+    const { fetch: fetchEditFeedback } = useFetch();
     const history = useHistory();
 
     const loadData = async () => {
@@ -26,7 +27,18 @@ function FeedbacksList(props) {
                 method: "GET",
             })
         }
+        catch (e) {
+        }
+    }
 
+    const handleFeedback = async (id) => {
+        try {
+            const result = await fetchEditFeedback({
+                url: Endpoints.feedback.editById,
+                method: "PUT",
+                data: { id, handled: !data.find(feedback => feedback.id == id).handled }
+            })
+        }
         catch (e) {
 
         }
@@ -58,11 +70,11 @@ function FeedbacksList(props) {
             id: "createdAt",
             label: <Trans>feedbacks.createdAt</Trans>,
         },
-                {
+        {
             id: "createdBy",
             label: <Trans>feedbacks.createdBy</Trans>,
         },
-                        {
+        {
             id: "screenshot",
             label: <Trans>feedbacks.screenshot</Trans>,
         }
@@ -78,27 +90,32 @@ function FeedbacksList(props) {
                 component: feedback.type == "BUG" ? <BugReportOutlinedIcon /> : <EmojiObjectsOutlinedIcon />
             },
             description: {
-                value: feedback.description
+                value: feedback.description,
+                maxCharacters: 200
             },
             handled: {
                 value: feedback.handled,
-                onClick: ()=>{console.log(feedback.id)}
+                onClick: async () => {
+                    await handleFeedback(feedback.id)
+                    themeContext.showSuccessSnackbar({ message: "feedback.changedHandleStatus" })
+                    loadData()
+                },
             },
             path: {
                 value: feedback.path
             },
             createdAt: {
-                value: feedback.createdAt
+                value: DateTime.fromISO(feedback.createdAt).toLocaleString()
             },
             createdBy: {
                 value: feedback.user.email,
                 link: `/users-management-system/${feedback.user.id}`
             },
-            screenshot:{
-                
-                link: process.env.REACT_APP_API_PUBLIC_URL +feedback.screenshotUrl}
+            screenshot: {
+                link: process.env.REACT_APP_API_PUBLIC_URL + feedback.screenshotUrl
             }
-        
+        }
+
     })
     return (
         <div >
@@ -108,9 +125,28 @@ function FeedbacksList(props) {
                     rows={rows}
                     buttons={[
                         {
+                            tooltip: "feebacks.handle",
+                            icon: <CheckOutlinedIcon />,
+                            onClick: async (id) => {
+                                await handleFeedback(id)
+                                themeContext.showSuccessSnackbar({ message: "feedbacks.changedHandleStatus" })
+                                loadData()
+                            },
+                            activateOnSingleSelection: true,
+                            activateOnMultipleSelection: false,
+                        },
+                        {
                             tooltip: "feebacks.delete",
                             icon: <DeleteOutlineOutlinedIcon />,
-                            onClick: (id) => history.push(`/feedbacks/${id}`),
+                            onClick: async (id) => {
+                                await fetchDeleteFeedback({
+                                    url: Endpoints.feedback.deleteById,
+                                    method: "DELETE",
+                                    urlParams: { id }
+                                })
+                                themeContext.showSuccessSnackbar({ message: "feedbacks.deletedSuccessfully" })
+                                loadData()
+                            },
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,
                         }
@@ -121,4 +157,4 @@ function FeedbacksList(props) {
     );
 }
 
-export default FeedbacksList;
+export default Feedbacks;

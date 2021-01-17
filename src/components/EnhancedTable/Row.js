@@ -63,10 +63,10 @@ const createTableCell = (element) => {
 
   let renderedElement = (
     <div className="singleCell"  >
-      <span className="singleCellText" style={element.onClick && {cursor:"pointer"}} onClick={()=> {
+      <span className="singleCellText" style={element.onClick && { cursor: "pointer" }} onClick={() => {
         if (element.onClick) return element.onClick()
         return
-        }}>
+      }}>
         {element.component
           ?
           typeof element.component === 'function'
@@ -78,7 +78,7 @@ const createTableCell = (element) => {
       </span>
       {element.link && (
         <span className="singleCellIcon">
-        
+
           <IconButton
             onClick={() => {
               window.open(element.link);

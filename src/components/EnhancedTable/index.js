@@ -206,8 +206,6 @@ function EnhancedTable(props) {
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = rows.map((n) => n.id);
-      //console.log(newSelecteds)
-
       setSelected(newSelecteds);
       return;
     }

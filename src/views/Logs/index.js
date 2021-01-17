@@ -10,7 +10,7 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { Card, CardContent, CardHeader, Chip } from "@material-ui/core";
 import "./style.scss";
 import { useHistory } from "react-router-dom";
-
+import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined';
 
 function LogsList(props) {
     const themeContext = useContext(ThemeContext);
@@ -110,6 +110,11 @@ function LogsList(props) {
                         collapsibleType="INFORMATION"
                         collapsibleHeadCells={headCells}
                         collapsibleHeadIconsAndDescription={[
+                            {
+                                icon: <MessageOutlinedIcon />,
+                                label: "logs.message",
+                                id: "message"
+                            },
                             {
                                 icon: <SearchOutlinedIcon />,
                                 label: "logs.object",

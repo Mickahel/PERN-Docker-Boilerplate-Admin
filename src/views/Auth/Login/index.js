@@ -5,8 +5,6 @@ import { Trans, useTranslation } from "react-i18next";
 import "./style.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
-import Chip from "@material-ui/core/Chip";
 import { useHistory } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";

@@ -3,7 +3,7 @@
 	"error": "An Error Has Occurred, Try Again",
 	"yes": "Yes",
 	"somethingWentWrong": "Something Went Wrong",
-	"Validation Error": "Error sending data",
+	"validationError": "Error sending data",
 	"youAreNotAnAdministrator": "You are not an administrator",
 	"notificationHandler": {
 		"title": "Can we Send You Notifications?",
@@ -83,7 +83,6 @@
 		"forgotPassword": "Forgot Password?",
 		"insertInformation": "Insert Information",
 		"activation": {
-			"Validation Error": "Error sending data",
 			"activatedText": "Your account has been activated",
 			"User not found": "User to activate not found",
 			"retry": "Retry",
@@ -110,6 +109,10 @@
 		"youAreNotAuthorized": "You Are not Authorized!"
 	},
 	"profile": {
+		"remindPassword": "Remind Password",
+		"dontRememberPassword": "Don't you remember your password?",
+		"dontRememberPasswordText": "An email will be sent to remember your password",
+		"emailSent": "Email Sent",
 		"disable": "Disable",
 		"disableAccount": "Disable Account",
 		"noNotifications": "You have not activated push notifications",
@@ -181,6 +184,10 @@
 		"handled": "Handled",
 		"path": "Path",
 		"createdAt": "Created At",
-		"createdBy": "Created By"
+		"createdBy": "Created By",
+		"changedHandleStatus": "Changed Handle Status",
+		"handle": "Handle",
+		"delete": "Delete",
+		"deletedSuccessfully": "Deleted Successfully"
 	}
 }

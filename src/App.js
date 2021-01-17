@@ -10,7 +10,7 @@ import SnackBar from "components/SnackBar";
 import StandardDialog from "components/StandardDialog";
 import ErrorBoundary from "components/ErrorBoundary";
 import yupConfig from "auxiliaries/yupConfig";
-import { DateTime, Settings } from "luxon";
+import { Settings } from "luxon";
 //? -----------------------mobile detenction
 const MobileDetect = require("mobile-detect");
 const md = new MobileDetect(window.navigator.userAgent);

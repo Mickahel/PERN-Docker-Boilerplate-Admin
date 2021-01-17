@@ -3,7 +3,7 @@
 	"error": "Un errore è accaduto, Prova di nuovo",
 	"yes": "Si",
 	"somethingWentWrong": "Qualcosa è andato storto",
-	"Validation Error": "Errore nell'invio dei dati",
+	"validationError": "Errore nell'invio dei dati",
 	"youAreNotAnAdministrator": "Non sei un amministratore",
 	"notificationHandler": {
 		"title": "Possiamo invarti delle notifiche?",
@@ -83,7 +83,6 @@
 		"forgotPassword": "Password Dimenticata?",
 		"insertInformation": "Inserisci le Informazioni",
 		"activation": {
-			"Validation Error": "Errore nell'invio dei dati",
 			"activatedText": "Il tuo account è stato attivato",
 			"User not found": "Utente da attivare non trovato",
 			"retry": "Riprova",
@@ -110,6 +109,10 @@
 		"youAreNotAuthorized": "Non sei Autorizzato!"
 	},
 	"profile": {
+		"remindPassword": "Ricorda Password",
+		"dontRememberPassword": "Non ricordi la tua password?",
+		"dontRememberPasswordText": "Verrà inviata un'email per ricordare la tua password",
+		"emailSent": "Email Inviata",
 		"disable": "Disabilita",
 		"disableAccount": "Disabilita Account",
 		"noNotifications": "Non hai attivato le notifiche push",
@@ -181,6 +184,10 @@
 		"handled": "Gestito",
 		"path": "Path",
 		"createdAt": "Creato Il",
-		"createdBy": "Creato Da"
+		"createdBy": "Creato Da",
+		"changedHandleStatus": "Cambiato lo stato Gestito",
+		"handle": "Gestisci",
+		"delete": "Elimina",
+		"deletedSuccessfully": "Eliminato con Successo"
 	}
 }

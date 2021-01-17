@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import GroupOutlinedIcon from '@material-ui/icons/GroupOutlined';
 import BugReportOutlinedIcon from '@material-ui/icons/BugReportOutlined';
 const SidebarMenu = [
   {
@@ -15,7 +15,7 @@ const SidebarMenu = [
     type: "item",
     id: "users.users",
     to: "/users-management-system",
-    icon: <PersonOutlineOutlinedIcon />,
+    icon: <GroupOutlinedIcon />,
     exact: true,
   },
   {

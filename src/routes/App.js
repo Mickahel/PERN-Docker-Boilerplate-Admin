@@ -19,8 +19,8 @@ import NotificationsHandler from 'theme/NotificationsHandler'
 
 import Account from "./Account";
 import UsersManagementSystem from "./UsersManagementSystem"
-import Feedbacks from "./Feedbacks"
 const ErrorNotFound = lazy(() => import("views/Placeholders/ErrorNotFound"));
+const Feedbacks = lazy(() => import("views/Feedbacks"));
 const Home = lazy(() => import("views/Home"));
 const Dashboard = lazy(() => import("views/Dashboard"));
 const Logs = lazy(() => import("views/Logs"));
@@ -89,7 +89,7 @@ function App(props) {
         <Switch>
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/users-management-system*" component={UsersManagementSystem} />
-          <Route exact path="/feedbacks*" component={Feedbacks} />
+          <Route exact path="/feedbacks" component={Feedbacks} />
           <Route exact path="/logs" component={Logs} />
           <Route path="/account*" exact component={Account} />
           <Route exact path="/" component={Home} />

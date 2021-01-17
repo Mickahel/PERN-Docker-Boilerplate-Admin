@@ -1,4 +1,4 @@
-import React, { lazy, useState, Suspense, useEffect, useContext } from "react";
+import React, { lazy, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import RoutingApp from "./App";
 import { ThemeContext } from "contexts/Providers/ThemeProvider";
