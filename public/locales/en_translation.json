@@ -170,6 +170,7 @@
 		"details": "Details"
 	},
 	"users": {
+		"updatedSuccesfully": "Updated Succesfully",
 		"status": "Status",
 		"firstname": "Firstname",
 		"lastname": "Lastname",

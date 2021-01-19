@@ -125,7 +125,7 @@ function Feedbacks(props) {
                     rows={rows}
                     buttons={[
                         {
-                            tooltip: "feebacks.handle",
+                            tooltip: "feedbacks.handle",
                             icon: <CheckOutlinedIcon />,
                             onClick: async (id) => {
                                 await handleFeedback(id)
@@ -136,7 +136,7 @@ function Feedbacks(props) {
                             activateOnMultipleSelection: false,
                         },
                         {
-                            tooltip: "feebacks.delete",
+                            tooltip: "feedbacks.delete",
                             icon: <DeleteOutlineOutlinedIcon />,
                             onClick: async (id) => {
                                 await fetchDeleteFeedback({

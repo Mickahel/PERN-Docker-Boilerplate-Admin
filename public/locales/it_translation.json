@@ -170,6 +170,7 @@
 		"object": "Oggetto"
 	},
 	"users": {
+		"updatedSuccesfully": "Aggiornato con Successo",
 		"status": "Stato",
 		"firstname": "Nome",
 		"lastname": "Cognome",

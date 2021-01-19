@@ -1,17 +1,15 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ThemeContext } from "contexts/Providers/ThemeProvider";
 import useFetch from "hooks/useFetch";
 import useFormUtils from "hooks/useFormUtils";
 import RoundLoader from "components/RoundLoader";
 import Endpoints from "Endpoints";
 import { Trans } from "react-i18next";
-import { Card, CardContent, CardHeader, Chip } from "@material-ui/core";
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
 import FloatingActionButton from "components/FloatingActionButton"
 import { useFormik } from "formik";
 import ProfileBox from './ProfileBox'
-import Button from "@material-ui/core/Button";
 import UploadProfileImageBox from './UploadProfileImageBox'
 import UtilitiesBox from './UtilitiesBox'
 import "./style.scss";
@@ -19,6 +17,7 @@ import * as Yup from "yup";
 function UserForm(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, setLoading, data, fetch } = useFetch();
+    const [imageFileForForm, setImageFileForForm] = useState()
     const { isNew } = useFormUtils();
     const validationSchema = Yup.object({
         email: Yup.string().email().required(),
@@ -61,7 +60,22 @@ function UserForm(props) {
         enableReinitialize: true,
         validationSchema,
         onSubmit: async (values) => {
-            console.log(values)
+            let data = values
+            delete data.filename
+            delete data.file
+            try {
+                await fetch({
+                    url: Endpoints.user.editByAdmin,
+                    data,
+                    filename: "profileImageUrl",
+                    file: imageFileForForm,
+                    method: "PUT",
+                })
+                themeContext.showSuccessSnackbar({ message: "users.updatedSuccesfully" })
+            }
+            catch (e) {
+
+            }
         }
     });
 
@@ -79,6 +93,7 @@ function UserForm(props) {
                 <div className="rightBox flex flex-col w-3/6">
                     <UploadProfileImageBox
                         formikUser={formikUser}
+                        setImageFileForForm={setImageFileForForm}
                     />
                     <UtilitiesBox
                         formikUser={formikUser}

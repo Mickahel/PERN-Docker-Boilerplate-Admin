@@ -14,7 +14,8 @@ const Endpoints = {
     editProfile: "/v1/app/user/edit", // ? GET
     disableAccount: "v1/app/user/disable", // ? DELETE
     getAll: "v1/admin/user/info/all", // ? GET
-    getById: "v1/admin/user/info/:id" // ? GET
+    getById: "v1/admin/user/info/:id", // ? GET
+    editByAdmin: "v1/admin/user/edit" // ? PUT
   },
   debug: {
     status: "/v1/debug/status/:status", // ? GET

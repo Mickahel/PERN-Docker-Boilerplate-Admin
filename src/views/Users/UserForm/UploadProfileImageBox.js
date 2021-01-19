@@ -12,7 +12,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { Trans } from "react-i18next";
 import useFetch from "hooks/useFetch";
 import Endpoints from "Endpoints";
-
+import useFormUtils from "hooks/useFormUtils";
 const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(12),
@@ -24,26 +24,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function UploadProfileImageBox(props) {
-  const { formikUser } = props
+  const { formikUser, setImageFileForForm } = props
   const classes = useStyles();
-  const [image, setImage] = useState(process.env.REACT_APP_API_PUBLIC_URL + formikUser.values.profileImageUrl)
-
+  const [image, setImage] = useState(formikUser.values.profileImageUrl && process.env.REACT_APP_API_PUBLIC_URL + formikUser.values.profileImageUrl)
+  const { isNew } = useFormUtils()
   const handleUploadClick = (event) => {
     if (event?.target?.files[0]) {
       let file = event.target.files[0];
       const reader = new FileReader();
-      console.log(URL.createObjectURL(event?.target?.files[0]))
       setImage(URL.createObjectURL(event?.target?.files[0]))
-
-      formikUser.setFieldValue("file", file)
-
-      formikUser.setFieldValue("filename", "profileImageUrl")
-      formikUser.setFieldValue("removeProfileImageUrl", false)
+      setImageFileForForm(file)
+      formikUser.setFieldValue("profileImageUrl", undefined)
+      if (!isNew()) {
+        formikUser.setFieldValue("removeProfileImageUrl", false)
+      }
       reader.onloadend = function (e) {
 
       }.bind(this);
     }
   };
+
   return (
     <Card id="uploadProfileImageBox">
       <CardHeader title={<Trans>profile.profileImage</Trans>} />
@@ -55,10 +55,10 @@ function UploadProfileImageBox(props) {
               src={image}
             ></Avatar>
             <div className=" ml-24 absolute">
-              {formikUser.values.profileImageUrl && (
+              {image && (
                 <IconButton
                   onClick={() => {
-                    formikUser.setFieldValue("removeProfileImageUrl", true)
+                    if (!isNew()) formikUser.setFieldValue("removeProfileImageUrl", true)
                     formikUser.setFieldValue("file", null)
                     formikUser.setFieldValue("profileImageUrl", null)
                     setImage(null)
