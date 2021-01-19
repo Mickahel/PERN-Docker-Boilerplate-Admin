@@ -16,7 +16,7 @@ const SidebarMenu = [
     id: "users.users",
     to: "/users-management-system",
     icon: <GroupOutlinedIcon />,
-    exact: true,
+    exact: false
   },
   {
     type: "item",

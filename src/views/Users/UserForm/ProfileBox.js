@@ -1,0 +1,133 @@
+import React, { useContext, useState } from "react";
+import { Card, CardContent, CardHeader } from "@material-ui/core";
+import { Trans } from "react-i18next";
+import TextField from "@material-ui/core/TextField";
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import useFormUtils from "hooks/useFormUtils";
+import "./style.scss";
+
+function ProfileBox(props) {
+  const { isNew } = useFormUtils();
+  const { formikUser } = props
+
+  return (
+    <Card id="userFormPersonalInformationBox">
+      <CardHeader title={<Trans>profile.personalInformation</Trans>} />
+
+      <CardContent>
+        <div className="flex flex-col">
+          <TextField
+            id="firstname"
+            label={<Trans>profile.firstname</Trans>}
+            variant="filled"
+            onChange={formikUser.handleChange}
+            value={formikUser.values?.firstname}
+          />
+
+          <TextField
+            id="lastname"
+            label={<Trans>profile.lastname</Trans>}
+            variant="filled"
+            onChange={formikUser.handleChange}
+            value={formikUser.values?.lastname}
+          />
+          <TextField
+            id="email"
+            error={
+              formikUser.touched.email && Boolean(formikUser.errors.email)
+            }
+            helperText={
+              formikUser.touched.email && (
+                <Trans>{formikUser.errors.email}</Trans>
+              )
+            }
+            onBlur={formikUser.handleBlur}
+            label="Email"
+            variant="filled"
+            onChange={formikUser.handleChange}
+            value={formikUser.values.email}
+          />
+
+          <TextField
+            id="password"
+            label="Password"
+            variant="filled"
+            onChange={formikUser.handleChange}
+            value={formikUser.values.password || ""}
+            error={
+              formikUser.touched.password && Boolean(formikUser.errors.password)
+            }
+            helperText={
+              formikUser.touched.password && (
+                <Trans>{formikUser.errors.password}</Trans>
+              )
+            }
+            onBlur={formikUser.handleBlur}
+          />
+
+          {!isNew() && <>
+            <TextField
+              disabled
+              id="createdAt"
+              label={<Trans>users.createdAt</Trans>}
+              variant="filled"
+              onChange={formikUser.handleChange}
+              value={formikUser.values.createdAt}
+            />
+
+            <TextField
+              disabled
+              id="updatedAt"
+              label={<Trans>users.updatedAt</Trans>}
+              variant="filled"
+              onChange={formikUser.handleChange}
+              value={formikUser.values.updatedAt}
+            />
+          </>
+          }
+
+
+          <FormControl variant="filled">
+            <InputLabel shrink >
+              <Trans>users.role</Trans>
+            </InputLabel>
+            <Select
+              id="role"
+              value={formikUser.values.role}
+              onChange={formikUser.handleChange}
+
+            >
+              <MenuItem value={"BASE"}>Base</MenuItem>
+              <MenuItem value={"ADMIN"}>Admin</MenuItem>
+              <MenuItem value={"SUPERADMIN"}>Super Admin</MenuItem>
+            </Select>
+          </FormControl>
+
+
+          <FormControl variant="filled">
+            <InputLabel shrink >
+              <Trans>users.status</Trans>
+            </InputLabel>
+            <Select
+              id="status"
+              value={formikUser.values.status}
+              onChange={formikUser.handleChange}
+
+            >
+              <MenuItem value={"ACTIVE"}><Trans>users.active</Trans></MenuItem>
+              <MenuItem value={"PENDING"}><Trans>users.pending</Trans></MenuItem>
+              <MenuItem value={"DISABLED"}><Trans>users.disabled</Trans></MenuItem>
+            </Select>
+          </FormControl>
+
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export default ProfileBox;

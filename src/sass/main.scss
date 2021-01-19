@@ -15,7 +15,8 @@ html {
 	margin: 0;
 }
 
-.MuiTextField-root {
+.MuiTextField-root,
+.MuiFormControl-root {
 	margin: 10px !important;
 }
 
@@ -54,6 +55,20 @@ button {
 	background-color: #616161;
 }
 */
+
+.rightBox {
+	margin-left: $itemMargin;
+}
+
+.centerBox {
+	margin-left: $itemMargin;
+	margin-right: $itemMargin;
+}
+
+.leftBox {
+	margin-right: $itemMargin;
+}
+
 @media only screen and (max-width: $mobileWidth) {
 	.contentHeight {
 		//margin: 0 $standardMargin;
@@ -62,5 +77,12 @@ button {
             flex-direction: column;
             align-items: center;
         }*/
+	}
+	.leftBox,
+	.rightBox,
+	.centerBox {
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
 	}
 }

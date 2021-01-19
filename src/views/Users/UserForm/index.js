@@ -9,39 +9,88 @@ import { Card, CardContent, CardHeader, Chip } from "@material-ui/core";
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
 import FloatingActionButton from "components/FloatingActionButton"
+import { useFormik } from "formik";
+import ProfileBox from './ProfileBox'
+import Button from "@material-ui/core/Button";
+import UploadProfileImageBox from './UploadProfileImageBox'
+import UtilitiesBox from './UtilitiesBox'
 import "./style.scss";
-
+import * as Yup from "yup";
 function UserForm(props) {
     const themeContext = useContext(ThemeContext);
-    const { loading, data, fetch } = useFetch();
+    const { loading, setLoading, data, fetch } = useFetch();
     const { isNew } = useFormUtils();
+    const validationSchema = Yup.object({
+        email: Yup.string().email().required(),
+        password: isNew() && Yup.string().required(),
+    });
+
 
     const loadData = async () => {
         try {
             const result = await fetch({
-                url: Endpoints.user.getById,//
+                url: Endpoints.user.getById,
                 urlParams: {
                     id: props.match.params.id
                 },
                 method: "GET",
             })
-            console.log(result)
-            themeContext.setTitle(result.email, <PersonOutlineOutlinedIcon />);
+            formikUser.initialValues(result)
         }
         catch (e) {
 
         }
     }
+
+
     useEffect(() => {
         if (!isNew()) loadData()
+        else {
+            themeContext.setTitle("users.newUser", <PersonOutlineOutlinedIcon />);
+            setLoading(false)
+        }
     }, []);
+
+
+    const formikUser = useFormik({
+        initialValues: isNew() ? {
+            role: "BASE",
+            status: "ACTIVE",
+            password: "passToChange"
+        } : data,
+        enableReinitialize: true,
+        validationSchema,
+        onSubmit: async (values) => {
+            console.log(values)
+        }
+    });
+
+
 
     if (loading) return <RoundLoader />
     return (
-        <div >
+        <form onSubmit={formikUser.handleSubmit}>
+            <div id="userForm" className="flex">
+                <div className="leftBox flex flex-col w-3/6">
+                    <ProfileBox
+                        formikUser={formikUser}
+                    />
+                </div>
+                <div className="rightBox flex flex-col w-3/6">
+                    <UploadProfileImageBox
+                        formikUser={formikUser}
+                    />
+                    <UtilitiesBox
+                        formikUser={formikUser}
+                    />
+                </div>
+            </div>
             <FloatingActionButton
-                icon={<SaveOutlinedIcon />} />
-        </div>
+                type="submit"
+                tooltip={isNew() ? "users.createUser" : "users.updateUser"}
+                icon={<SaveOutlinedIcon />}
+            />
+        </form>
     );
 }
 

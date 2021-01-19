@@ -111,7 +111,7 @@ function UsersList(props) {
                     ]}
                 />
             </Card>
-            <FloatingActionButton href="/users-management-system/new" />
+            <FloatingActionButton tooltip="users.createUser" href="/users-management-system/new" />
         </div>
     );
 }

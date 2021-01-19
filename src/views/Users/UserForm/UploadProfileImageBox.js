@@ -1,4 +1,4 @@
-import React, { useContext, useCallback, useEffect } from "react";
+import React, { useState } from "react";
 import { ThemeContext } from "contexts/Providers/ThemeProvider";
 import { UserContext } from "contexts/Providers/UserProvider";
 import { Card, CardContent, CardHeader, Button } from "@material-ui/core";
@@ -24,54 +24,44 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function UploadProfileImageBox(props) {
-  const userContext = useContext(UserContext);
-  const themeContext = useContext(ThemeContext);
+  const { formikUser } = props
   const classes = useStyles();
-  const { fetch } = useFetch();
+  const [image, setImage] = useState(process.env.REACT_APP_API_PUBLIC_URL + formikUser.values.profileImageUrl)
 
   const handleUploadClick = (event) => {
     if (event?.target?.files[0]) {
       let file = event.target.files[0];
       const reader = new FileReader();
-      let url = reader.readAsDataURL(file);
+      console.log(URL.createObjectURL(event?.target?.files[0]))
+      setImage(URL.createObjectURL(event?.target?.files[0]))
 
-      reader.onloadend = async function (e) {
-        let result = await fetch({
-          url: Endpoints.user.editProfile,
-          method: "PUT",
-          file,
-          filename: "profileImageUrl",
-        });
+      formikUser.setFieldValue("file", file)
 
-        userContext.setUser(result);
+      formikUser.setFieldValue("filename", "profileImageUrl")
+      formikUser.setFieldValue("removeProfileImageUrl", false)
+      reader.onloadend = function (e) {
+
       }.bind(this);
     }
   };
   return (
-    <Card id="UploadProfileImageBox">
+    <Card id="uploadProfileImageBox">
       <CardHeader title={<Trans>profile.profileImage</Trans>} />
       <CardContent>
         <div className="flex flex-col items-center">
           <div className="flex relative">
             <Avatar
               className={classes.large}
-              src={userContext.user.profileImageUrl &&
-                process.env.REACT_APP_API_PUBLIC_URL +
-                userContext.user.profileImageUrl
-              }
+              src={image}
             ></Avatar>
             <div className=" ml-24 absolute">
-              {userContext.user.profileImageUrl && (
+              {formikUser.values.profileImageUrl && (
                 <IconButton
-                  onClick={async () => {
-                    let result = await fetch({
-                      url: Endpoints.user.editProfile,
-                      method: "PUT",
-                      data: {
-                        removeProfileImageUrl: true,
-                      },
-                    });
-                    userContext.setUser(result);
+                  onClick={() => {
+                    formikUser.setFieldValue("removeProfileImageUrl", true)
+                    formikUser.setFieldValue("file", null)
+                    formikUser.setFieldValue("profileImageUrl", null)
+                    setImage(null)
                   }}
                 >
                   <DeleteOutlineOutlinedIcon color="primary" />

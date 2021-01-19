@@ -109,6 +109,7 @@
 		"youAreNotAuthorized": "Non sei Autorizzato!"
 	},
 	"profile": {
+		"profileImage": "Immagine Profilo",
 		"remindPassword": "Ricorda Password",
 		"dontRememberPassword": "Non ricordi la tua password?",
 		"dontRememberPasswordText": "Verrà inviata un'email per ricordare la tua password",
@@ -174,7 +175,16 @@
 		"lastname": "Cognome",
 		"role": "Ruolo",
 		"users": "Utenti",
-		"edit": "Modifica"
+		"newUser": "Nuovo Utente",
+		"edit": "Modifica",
+		"createdAt": "Creato il",
+		"updatedAt": "Aggiornato il",
+		"createUser": "Crea Utente",
+		"updateUser": "Aggiorna Utente",
+		"active": "Attivo",
+		"pending": "In attesa",
+		"disabled": "Disabilitato",
+		"utilities": "Utilità"
 	},
 	"feedbacks": {
 		"screenshot": "Screenshot",

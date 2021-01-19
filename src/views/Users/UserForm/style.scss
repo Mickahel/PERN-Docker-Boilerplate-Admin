@@ -1,8 +1,26 @@
 @import "../../../configuration/variables.scss";
 
-@media only screen and (max-width: $mobileWidth) {
+#utilitiesBox {
+	margin-top: $itemMargin;
+}
 
-    #logsInformationContent{
-        flex-direction:column !important;
-    }
+#uploadProfileImageBox {
+	margin-bottom: $itemMargin;
+}
+
+@media only screen and (max-width: $mobileWidth) {
+	#userForm {
+		flex-direction: column !important;
+		> div {
+			width: 100%;
+		}
+
+		#uploadProfileImageBox {
+			margin-top: $itemMargin;
+		}
+
+		#userFormPersonalInformationBox {
+			margin-bottom: $itemMargin;
+		}
+	}
 }

@@ -304,6 +304,7 @@ function useFetcher(props) {
 
   return {
     loading,
+    setLoading,
     data,
     error,
     fetch,

@@ -22,11 +22,6 @@ function App() {
   yupConfig();
   return (
     <ErrorBoundary>
-      {/* <LocalizationProvider
-        dateLibInstance={}
-        dateAdapter={}
-        locale={i18n.language.split("-")[0]}
-     >*/}
       <Provider>
         <Router>
           <MUIThemeHandler>
@@ -36,8 +31,6 @@ function App() {
           </MUIThemeHandler>
         </Router>
       </Provider>
-      {/*</LocalizationProvider>
-      */}
     </ErrorBoundary>
   );
 }
