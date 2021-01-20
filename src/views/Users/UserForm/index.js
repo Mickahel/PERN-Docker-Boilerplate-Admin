@@ -17,6 +17,8 @@ import * as Yup from "yup";
 function UserForm(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, setLoading, data, fetch } = useFetch();
+    const { fetch: fetchNew } = useFetch();
+
     const [imageFileForForm, setImageFileForForm] = useState()
     const { isNew } = useFormUtils();
     const validationSchema = Yup.object({
@@ -55,23 +57,31 @@ function UserForm(props) {
         initialValues: isNew() ? {
             role: "BASE",
             status: "ACTIVE",
-            password: "passToChange"
+            password: "passToChange",
+            sendActivationEmail: false,
         } : data,
         enableReinitialize: true,
         validationSchema,
         onSubmit: async (values) => {
-            let data = values
-            delete data.filename
-            delete data.file
             try {
-                await fetch({
-                    url: Endpoints.user.editByAdmin,
-                    data,
-                    filename: "profileImageUrl",
-                    file: imageFileForForm,
-                    method: "PUT",
-                })
-                themeContext.showSuccessSnackbar({ message: "users.updatedSuccesfully" })
+                if (isNew()) {
+                    await fetchNew({
+                        url: Endpoints.user.create,
+                        data: { ciaos: "d" },
+                        filename: "profileImageUrl",
+                        file: imageFileForForm,
+                        method: "POST",
+                    })
+                } else {
+                    await fetch({
+                        url: Endpoints.user.editByAdmin,
+                        data: values,
+                        filename: "profileImageUrl",
+                        file: imageFileForForm,
+                        method: "PUT",
+                    })
+                }
+                themeContext.showSuccessSnackbar({ message: `users.${isNew() ? "created" : "updated"}Successfully` })
             }
             catch (e) {
 
@@ -95,9 +105,9 @@ function UserForm(props) {
                         formikUser={formikUser}
                         setImageFileForForm={setImageFileForForm}
                     />
-                    <UtilitiesBox
+                    {isNew() && <UtilitiesBox
                         formikUser={formikUser}
-                    />
+                    />}
                 </div>
             </div>
             <FloatingActionButton

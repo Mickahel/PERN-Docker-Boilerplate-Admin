@@ -35,9 +35,8 @@ function UploadProfileImageBox(props) {
       setImage(URL.createObjectURL(event?.target?.files[0]))
       setImageFileForForm(file)
       formikUser.setFieldValue("profileImageUrl", undefined)
-      if (!isNew()) {
-        formikUser.setFieldValue("removeProfileImageUrl", false)
-      }
+      if (!isNew()) formikUser.setFieldValue("removeProfileImageUrl", false)
+
       reader.onloadend = function (e) {
 
       }.bind(this);

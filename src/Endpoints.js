@@ -15,7 +15,10 @@ const Endpoints = {
     disableAccount: "v1/app/user/disable", // ? DELETE
     getAll: "v1/admin/user/info/all", // ? GET
     getById: "v1/admin/user/info/:id", // ? GET
-    editByAdmin: "v1/admin/user/edit" // ? PUT
+    editByAdmin: "v1/admin/user/edit", // ? PUT
+    create: "v1/admin/user/create", // ? POST
+    sendActivationEmail: "v1/admin/user/send-activation-email/:id", // ? POST
+    sendLostPasswordEmail: "v1/admin/user/send-lost-password-email/:id" // ? POST
   },
   debug: {
     status: "/v1/debug/status/:status", // ? GET

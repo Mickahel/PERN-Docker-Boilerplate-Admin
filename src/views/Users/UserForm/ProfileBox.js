@@ -25,7 +25,7 @@ function ProfileBox(props) {
             label={<Trans>profile.firstname</Trans>}
             variant="filled"
             onChange={formikUser.handleChange}
-            value={formikUser.values?.firstname}
+            value={formikUser.values?.firstname || ""}
           />
 
           <TextField
@@ -33,23 +33,17 @@ function ProfileBox(props) {
             label={<Trans>profile.lastname</Trans>}
             variant="filled"
             onChange={formikUser.handleChange}
-            value={formikUser.values?.lastname}
+            value={formikUser.values?.lastname || ""}
           />
           <TextField
             id="email"
-            error={
-              formikUser.touched.email && Boolean(formikUser.errors.email)
-            }
-            helperText={
-              formikUser.touched.email && (
-                <Trans>{formikUser.errors.email}</Trans>
-              )
-            }
+            error={Boolean(formikUser.errors.email)}
+            helperText={<Trans>{formikUser.errors.email}</Trans>}
             onBlur={formikUser.handleBlur}
             label="Email"
             variant="filled"
             onChange={formikUser.handleChange}
-            value={formikUser.values.email}
+            value={formikUser.values.email || ""}
           />
 
           <TextField
@@ -96,7 +90,7 @@ function ProfileBox(props) {
               <Trans>users.role</Trans>
             </InputLabel>
             <Select
-              id="role"
+              name="role"
               value={formikUser.values.role}
               onChange={formikUser.handleChange}
 
@@ -113,7 +107,7 @@ function ProfileBox(props) {
               <Trans>users.status</Trans>
             </InputLabel>
             <Select
-              id="status"
+              name="status"
               value={formikUser.values.status}
               onChange={formikUser.handleChange}
 

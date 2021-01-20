@@ -12,13 +12,15 @@ import FloatingActionButton from "components/FloatingActionButton"
 import "./style.scss";
 import { useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
-
-
+import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
+import TouchAppOutlinedIcon from '@material-ui/icons/TouchAppOutlined';
 
 
 function UsersList(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, data, fetch } = useFetch();
+    const { fetch: fetchSendLostPasswordEmail } = useFetch();
+    const { fetch: fetchSendActivationEmail } = useFetch();
     const history = useHistory();
 
     const loadData = async () => {
@@ -105,6 +107,38 @@ function UsersList(props) {
                             tooltip: "users.edit",
                             icon: <EditOutlinedIcon />,
                             onClick: (id) => history.push(`/users-management-system/${id}`),
+                            activateOnSingleSelection: true,
+                            activateOnMultipleSelection: false,
+                        },
+                        {
+                            tooltip: "users.sendActivationEmail",
+                            icon: <TouchAppOutlinedIcon />,
+                            onClick: async (id) => {
+                                await fetchSendActivationEmail({
+                                    url: Endpoints.user.sendActivationEmail,
+                                    method: "POST",
+                                    urlParams: {
+                                        id
+                                    }
+                                })
+                                themeContext.showSuccessSnackbar({ message: "users.activationEmailSent" })
+                            },
+                            activateOnSingleSelection: true,
+                            activateOnMultipleSelection: false,
+                        },
+                        {
+                            tooltip: "users.sendLostPasswordEmail",
+                            icon: <VpnKeyOutlinedIcon />,
+                            onClick: async (id) => {
+                                await fetchSendLostPasswordEmail({
+                                    url: Endpoints.user.sendLostPasswordEmail,
+                                    method: "POST",
+                                    urlParams: {
+                                        id
+                                    }
+                                })
+                                themeContext.showSuccessSnackbar({ message: "users.lostPasswordEmailSent" })
+                            },
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,
                         }
