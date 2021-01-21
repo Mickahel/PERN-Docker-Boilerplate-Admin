@@ -15,13 +15,14 @@ import Avatar from "@material-ui/core/Avatar";
 import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
 import TouchAppOutlinedIcon from '@material-ui/icons/TouchAppOutlined';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
-
+import AccessibilityOutlinedIcon from '@material-ui/icons/AccessibilityOutlined';
 function UsersList(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, data, fetch } = useFetch();
     const { fetch: fetchSendLostPasswordEmail } = useFetch();
     const { fetch: fetchSendActivationEmail } = useFetch();
     const { fetch: fetchDisableUser } = useFetch();
+    const { fetch: fetchImpersonificateUser } = useFetch();
     const history = useHistory();
 
     const loadData = async () => {
@@ -158,6 +159,23 @@ function UsersList(props) {
                                 })
                                 loadData()
                                 themeContext.showSuccessSnackbar({ message: "users.disabledUserSuccessfully" })
+                            },
+                            activateOnSingleSelection: true,
+                            activateOnMultipleSelection: false,
+                        },
+                        {
+                            tooltip: "users.impersonificateUser",
+                            icon: <AccessibilityOutlinedIcon />,
+                            onClick: async id => {
+                                await fetchImpersonificateUser({
+                                    url: Endpoints.user.impersonificate,
+                                    method: "POST",
+                                    urlParams: {
+                                        id
+                                    }
+                                })
+                                window.location.assign(process.env.REACT_APP_FRONTEND_LINK);
+
                             },
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,

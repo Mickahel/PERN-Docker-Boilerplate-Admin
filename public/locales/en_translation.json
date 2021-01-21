@@ -172,8 +172,10 @@
 		"details": "Details"
 	},
 	"users": {
+		"impersonificateUser": "Impersonificate User",
 		"disableUser": "Disable User",
 		"updatedSuccessfully": "Updated Successfully",
+		"createdSuccessfully": "Creato Successfully",
 		"sendActivationEmail": "Send Activation Email",
 		"sendLostPasswordEmail": "Send Email to Reset Password",
 		"updatedSuccesfully": "Updated Succesfully",

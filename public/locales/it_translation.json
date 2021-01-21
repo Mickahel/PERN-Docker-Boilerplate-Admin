@@ -172,8 +172,10 @@
 		"object": "Oggetto"
 	},
 	"users": {
+		"impersonificateUser": "Impersonifica Utente",
 		"disableUser": "Disabilita Utente",
 		"updatedSuccessfully": "Aggiornato con Successo",
+		"createdSuccessfully": "Creato con Successo",
 		"sendActivationEmail": "Invia Email di Attivazione",
 		"sendLostPasswordEmail": "Invia Email di Reset Password",
 		"updatedSuccesfully": "Aggiornato con Successo",

@@ -18,7 +18,8 @@ const Endpoints = {
     editByAdmin: "v1/admin/user/edit", // ? PUT
     create: "v1/admin/user/create", // ? POST
     sendActivationEmail: "v1/admin/user/send-activation-email/:id", // ? POST
-    sendLostPasswordEmail: "v1/admin/user/send-lost-password-email/:id" // ? POST
+    sendLostPasswordEmail: "v1/admin/user/send-lost-password-email/:id", // ? POST
+    impersonificate: "v1/admin/user/impersonificate/:id" // ? POST
   },
   debug: {
     status: "/v1/debug/status/:status", // ? GET
