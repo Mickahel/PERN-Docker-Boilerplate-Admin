@@ -14,13 +14,14 @@ import { useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
 import TouchAppOutlinedIcon from '@material-ui/icons/TouchAppOutlined';
-
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 
 function UsersList(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, data, fetch } = useFetch();
     const { fetch: fetchSendLostPasswordEmail } = useFetch();
     const { fetch: fetchSendActivationEmail } = useFetch();
+    const { fetch: fetchDisableUser } = useFetch();
     const history = useHistory();
 
     const loadData = async () => {
@@ -138,6 +139,25 @@ function UsersList(props) {
                                     }
                                 })
                                 themeContext.showSuccessSnackbar({ message: "users.lostPasswordEmailSent" })
+                            },
+                            activateOnSingleSelection: true,
+                            activateOnMultipleSelection: false,
+                        },
+                        {
+                            tooltip: "users.disableUser",
+                            icon: <DeleteOutlineOutlinedIcon />,
+                            disabled: id => !Array.isArray(id) && data.find(element => element.id == id).status === "DISABLED",
+                            onClick: async id => {
+                                await fetchDisableUser({
+                                    url: Endpoints.user.editByAdmin,
+                                    method: "PUT",
+                                    data: {
+                                        id,
+                                        status: "DISABLED"
+                                    }
+                                })
+                                loadData()
+                                themeContext.showSuccessSnackbar({ message: "users.disabledUserSuccessfully" })
                             },
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,

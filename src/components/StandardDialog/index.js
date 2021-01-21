@@ -121,7 +121,6 @@ function StandardDialog(props) {
   //-------------------------- Error handling -------------------------
   if (err) {
     // qui ho un errore
-    //console.log("L'errore è", err)
     let mex = _.get(err, "data.message");
     if (mex) message = mex;
     let stack = _.get(err, "data.stack");

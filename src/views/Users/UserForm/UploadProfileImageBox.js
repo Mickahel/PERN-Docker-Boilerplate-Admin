@@ -34,7 +34,7 @@ function UploadProfileImageBox(props) {
       const reader = new FileReader();
       setImage(URL.createObjectURL(event?.target?.files[0]))
       setImageFileForForm(file)
-      formikUser.setFieldValue("profileImageUrl", undefined)
+      //formikUser.setFieldValue("profileImageUrl", undefined)
       if (!isNew()) formikUser.setFieldValue("removeProfileImageUrl", false)
 
       reader.onloadend = function (e) {
@@ -58,8 +58,7 @@ function UploadProfileImageBox(props) {
                 <IconButton
                   onClick={() => {
                     if (!isNew()) formikUser.setFieldValue("removeProfileImageUrl", true)
-                    formikUser.setFieldValue("file", null)
-                    formikUser.setFieldValue("profileImageUrl", null)
+                    //formikUser.setFieldValue("profileImageUrl", null)
                     setImage(null)
                   }}
                 >

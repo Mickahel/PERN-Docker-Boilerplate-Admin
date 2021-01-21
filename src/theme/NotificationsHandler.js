@@ -91,7 +91,7 @@ function NotificationsHandler(props) {
     try {
       const messaging = firebase.messaging();
       const token = await messaging.getToken();
-      console.log('Token:', token);
+      console.log('Token:', token); // TODO REMOVE
       await fetch({
         silent: true,
         method: "POST",

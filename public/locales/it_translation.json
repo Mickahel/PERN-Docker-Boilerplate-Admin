@@ -142,6 +142,8 @@
 		"changePersonalInformation": "Modifica Informazioni Personali"
 	},
 	"apiErrors": {
+		"userDoesntHaveRightPermission": "Non Hai l'Autorizzazione Adatta",
+		"youDontHaveThePermissionDueToYourUserRole": "Non Hai l'Autorizzazione a Causa del Tuo Ruolo Utente",
 		"networkError": "Errore di Connessione",
 		"loginAgain": "Accedi alla Piattaforma"
 	},
@@ -170,6 +172,10 @@
 		"object": "Oggetto"
 	},
 	"users": {
+		"disableUser": "Disabilita Utente",
+		"updatedSuccessfully": "Aggiornato con Successo",
+		"sendActivationEmail": "Invia Email di Attivazione",
+		"sendLostPasswordEmail": "Invia Email di Reset Password",
 		"updatedSuccesfully": "Aggiornato con Successo",
 		"status": "Stato",
 		"firstname": "Nome",

@@ -36,7 +36,7 @@ function UserForm(props) {
                 },
                 method: "GET",
             })
-            formikUser.initialValues(result)
+            //formikUser.initialValues(result)
         }
         catch (e) {
 
@@ -67,7 +67,7 @@ function UserForm(props) {
                 if (isNew()) {
                     await fetchNew({
                         url: Endpoints.user.create,
-                        data: { ciaos: "d" },
+                        data: values,
                         filename: "profileImageUrl",
                         file: imageFileForForm,
                         method: "POST",

@@ -7,18 +7,18 @@ import Endpoints from "Endpoints";
 import { Trans } from "react-i18next";
 import { Card } from "@material-ui/core";
 import "./style.scss";
-import { useHistory } from "react-router-dom";
 import BugReportOutlinedIcon from '@material-ui/icons/BugReportOutlined';
 import EmojiObjectsOutlinedIcon from '@material-ui/icons/EmojiObjectsOutlined';
 import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import { DateTime } from "luxon";
+
+
 function Feedbacks(props) {
     const themeContext = useContext(ThemeContext);
     const { loading, data, fetch } = useFetch();
     const { fetch: fetchDeleteFeedback } = useFetch();
     const { fetch: fetchEditFeedback } = useFetch();
-    const history = useHistory();
 
     const loadData = async () => {
         try {
@@ -32,16 +32,12 @@ function Feedbacks(props) {
     }
 
     const handleFeedback = async (id) => {
-        try {
-            const result = await fetchEditFeedback({
-                url: Endpoints.feedback.editById,
-                method: "PUT",
-                data: { id, handled: !data.find(feedback => feedback.id == id).handled }
-            })
-        }
-        catch (e) {
+        await fetchEditFeedback({
+            url: Endpoints.feedback.editById,
+            method: "PUT",
+            data: { id, handled: !data.find(feedback => feedback.id == id).handled }
+        })
 
-        }
     }
     useEffect(() => {
         themeContext.setTitle("feedbacks.feedbacks", <BugReportOutlinedIcon />);
@@ -115,8 +111,8 @@ function Feedbacks(props) {
                 link: process.env.REACT_APP_API_PUBLIC_URL + feedback.screenshotUrl
             }
         }
-
     })
+
     return (
         <div >
             <Card>
@@ -128,9 +124,12 @@ function Feedbacks(props) {
                             tooltip: "feedbacks.handle",
                             icon: <CheckOutlinedIcon />,
                             onClick: async (id) => {
-                                await handleFeedback(id)
-                                themeContext.showSuccessSnackbar({ message: "feedbacks.changedHandleStatus" })
-                                loadData()
+                                try {
+                                    await handleFeedback(id)
+                                    themeContext.showSuccessSnackbar({ message: "feedbacks.changedHandleStatus" })
+                                    loadData()
+                                }
+                                catch (e) { }
                             },
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,
@@ -139,13 +138,17 @@ function Feedbacks(props) {
                             tooltip: "feedbacks.delete",
                             icon: <DeleteOutlineOutlinedIcon />,
                             onClick: async (id) => {
-                                await fetchDeleteFeedback({
-                                    url: Endpoints.feedback.deleteById,
-                                    method: "DELETE",
-                                    urlParams: { id }
-                                })
-                                themeContext.showSuccessSnackbar({ message: "feedbacks.deletedSuccessfully" })
-                                loadData()
+                                try {
+                                    await fetchDeleteFeedback({
+                                        url: Endpoints.feedback.deleteById,
+                                        method: "DELETE",
+                                        urlParams: { id }
+                                    })
+                                    loadData()
+                                    themeContext.showSuccessSnackbar({ message: "feedbacks.deletedSuccessfully" })
+
+                                }
+                                catch (e) { }
                             },
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,
