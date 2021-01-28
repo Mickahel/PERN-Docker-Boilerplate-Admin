@@ -64,7 +64,7 @@
 			"resettedPasswordText": "Password Resettata Correttamente"
 		},
 		"User not found": "Utente Non Trovato",
-		"signedupSuccessfully": "Ti sei registrato correttaente, riceverai un'email di attivazione, controlla la tua email per attivare il tuo account.",
+		"signedupSuccessfully": "Ti sei registrato correttamente, riceverai un'email di attivazione, controlla la tua email per attivare il tuo account.",
 		"User is already registered": "L'utente è Già Registrato",
 		"User is not activated": "L'utente non è Attivato",
 		"signup": "Registrati",
@@ -91,7 +91,14 @@
 			"goToApp": "Accedi all'app"
 		}
 	},
-
+	"database": {
+		"tableName": "Nome",
+		"size": "Peso",
+		"database": "Database",
+		"totalTablesSize": "Peso Totale Tabelle",
+		"information": "Informazioni",
+		"tablesSize": "Peso Tabelle"
+	},
 	"yup": {
 		"invalidField": "Campo non Valido",
 		"required": "Campo Obbligatorio",
@@ -172,6 +179,15 @@
 		"object": "Oggetto"
 	},
 	"users": {
+		"pushNotificationSent": "Notifica Push Inviata",
+		"sendPushNotificationText": "Compila tutte le informazioni necessarie per inviare una notifica push",
+		"title": "Titolo",
+		"body": "Corpo",
+		"clickAction": "Azione al Click ",
+		"cancel": "Annulla",
+		"send": "Invia",
+
+		"sendPushNotification": "Invia Notifica Push",
 		"impersonificateUser": "Impersonifica Utente",
 		"disableUser": "Disabilita Utente",
 		"updatedSuccessfully": "Aggiornato con Successo",

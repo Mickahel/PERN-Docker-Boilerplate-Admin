@@ -24,6 +24,7 @@ const Feedbacks = lazy(() => import("views/Feedbacks"));
 const Home = lazy(() => import("views/Home"));
 const Dashboard = lazy(() => import("views/Dashboard"));
 const Logs = lazy(() => import("views/Logs"));
+const Database = lazy(() => import("views/Database"));
 
 function App(props) {
   const userContext = useContext(UserContext);
@@ -90,6 +91,7 @@ function App(props) {
           <Route exact path="/users-management-system*" component={UsersManagementSystem} />
           <Route exact path="/feedbacks" component={Feedbacks} />
           <Route exact path="/logs" component={Logs} />
+          <Route exact path="/database" component={Database} />
           <Route path="/account*" exact component={Account} />
           <Route exact path="/" component={Home} />
           <Route component={ErrorNotFound} />

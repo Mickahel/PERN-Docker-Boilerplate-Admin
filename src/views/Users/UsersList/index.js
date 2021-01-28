@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ThemeContext } from "contexts/Providers/ThemeProvider";
 import useFetch from "hooks/useFetch";
 import RoundLoader from "components/RoundLoader";
@@ -16,8 +16,12 @@ import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
 import TouchAppOutlinedIcon from '@material-ui/icons/TouchAppOutlined';
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
 import AccessibilityOutlinedIcon from '@material-ui/icons/AccessibilityOutlined';
+import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
+import PushNotificationDialog from './PushNotificationDialog'
 function UsersList(props) {
     const themeContext = useContext(ThemeContext);
+    const [openPushNotificationDialog, setOpenPushNotificationDialog] = useState(false);
+    const [selectedIdsForPushNotification, setSelectedIdsForPushNotification] = useState();
     const { loading, data, fetch } = useFetch();
     const { fetch: fetchSendLostPasswordEmail } = useFetch();
     const { fetch: fetchSendActivationEmail } = useFetch();
@@ -179,10 +183,25 @@ function UsersList(props) {
                             },
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,
+                        },
+                        {
+                            tooltip: "users.sendPushNotification",
+                            icon: <SendOutlinedIcon />,
+                            onClick: ids => {
+                                setSelectedIdsForPushNotification(ids)
+                                setOpenPushNotificationDialog(true)
+                            },
+                            activateOnSingleSelection: true,
+                            activateOnMultipleSelection: true,
                         }
                     ]}
                 />
             </Card>
+            <PushNotificationDialog
+                open={openPushNotificationDialog}
+                setOpen={setOpenPushNotificationDialog}
+                ids={selectedIdsForPushNotification}
+            />
             <FloatingActionButton tooltip="users.createUser" href="/users-management-system/new" />
         </div>
     );

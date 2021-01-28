@@ -233,10 +233,13 @@ function useFetcher(props) {
       const formData = new FormData();
       formData.append(options.filename, options.file);
       options.addHeadersForFiles = true
-      if (options?.data) Object.keys(options.data).forEach((key) => formData.append(key, options.data[key]));
+      if (options?.data) Object.keys(options.data).forEach((key) => {
+        console.log(Array.isArray(options.data[key]), options.data[key])
+        if (Array.isArray(options.data[key])) options.data[key].map(elem => formData.append(key, elem))
+        else formData.append(key, options.data[key])
+      });
       options.data = formData
     }
-
     /*  options = {
         ...options,
         data: formData,

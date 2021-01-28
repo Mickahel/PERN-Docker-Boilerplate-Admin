@@ -91,39 +91,38 @@ function LogsList(props) {
         }
     }).reverse()
     return (
-        <div>
+        <div className="flex flex-col">
             <TopBoxes
                 startDate={data.startDate}
                 endDate={data.endDate}
                 amountOfDataKept={data.keep.amount}
             />
-            <div className="mt-5">
-                <Card>
-                    <EnhancedTable
-                        headCells={headCells}
-                        rows={rows}
-                        rowsPerPage={25}
-                        dense
-                        readOnly
-                        collapsible={true}
-                        collapsibleTitle={"logs.details"}
-                        collapsibleType="INFORMATION"
-                        collapsibleHeadCells={headCells}
-                        collapsibleHeadIconsAndDescription={[
-                            {
-                                icon: <MessageOutlinedIcon />,
-                                label: "logs.message",
-                                id: "message"
-                            },
-                            {
-                                icon: <SearchOutlinedIcon />,
-                                label: "logs.object",
-                                id: "object"
-                            }
-                        ]}
-                    />
+            <Card id="logsTable">
+                <EnhancedTable
+                    headCells={headCells}
+                    rows={rows}
+                    rowsPerPage={25}
+                    dense
+                    readOnly
+                    collapsible={true}
+                    collapsibleTitle={"logs.details"}
+                    collapsibleType="INFORMATION"
+                    collapsibleHeadCells={headCells}
+                    collapsibleHeadIconsAndDescription={[
+                        {
+                            icon: <MessageOutlinedIcon />,
+                            label: "logs.message",
+                            id: "message"
+                        },
+                        {
+                            icon: <SearchOutlinedIcon />,
+                            label: "logs.object",
+                            id: "object"
+                        }
+                    ]}
+                />*
                 </Card>
-            </div>
+
         </div>
     );
 }

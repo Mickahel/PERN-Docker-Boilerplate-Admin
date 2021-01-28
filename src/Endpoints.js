@@ -24,6 +24,9 @@ const Endpoints = {
   debug: {
     status: "/v1/debug/status/:status", // ? GET
   },
+  database: {
+    tablesSize: "/v1/admin/database/tables-size" // ? GET
+  },
   feedback: {
     sendNew: "/v1/app/feedback/create", // ? POST
     getAll: "/v1/admin/feedback/all", // ? GET
@@ -32,7 +35,8 @@ const Endpoints = {
 
   },
   pushNotification: {
-    sendToken: "/v1/app/pushNotification/:token" // ? POST
+    sendToken: "/v1/app/pushNotification/:token", // ? POST
+    sendPushNotification: "/v1/admin/pushNotification/sendNotification" // ? POST
   },
   logs: {
     getAll: "/v1/admin/logs/" // ? GET

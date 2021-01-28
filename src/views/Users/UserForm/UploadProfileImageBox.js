@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { ThemeContext } from "contexts/Providers/ThemeProvider";
-import { UserContext } from "contexts/Providers/UserProvider";
 import { Card, CardContent, CardHeader, Button } from "@material-ui/core";
-import PhotoCameraOutlinedIcon from "@material-ui/icons/PhotoCameraOutlined";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -10,8 +7,7 @@ import "./style.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import { Trans } from "react-i18next";
-import useFetch from "hooks/useFetch";
-import Endpoints from "Endpoints";
+
 import useFormUtils from "hooks/useFormUtils";
 const useStyles = makeStyles((theme) => ({
   large: {

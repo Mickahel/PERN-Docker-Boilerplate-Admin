@@ -91,7 +91,14 @@
 			"activatingText": "We are activating your account"
 		}
 	},
-
+	"database": {
+		"tableName": "Name",
+		"size": "Size",
+		"database": "Database",
+		"totalTablesSize": "Total Tables Size",
+		"information": "Information",
+		"tablesSize": "Tables Size"
+	},
 	"yup": {
 		"invalidField": "Invalid Field",
 		"required": "Required Field",
@@ -172,6 +179,14 @@
 		"details": "Details"
 	},
 	"users": {
+		"pushNotificationSent": "Push Notification Sent",
+		"sendPushNotificationText": "Compile all the necessary information to send a push notification",
+		"title": "Title",
+		"body": "Body",
+		"clickAction": "Click Action",
+		"cancel": "Cancel",
+		"send": "Send",
+		"sendPushNotification": "Send Push Notification",
 		"impersonificateUser": "Impersonificate User",
 		"disableUser": "Disable User",
 		"updatedSuccessfully": "Updated Successfully",
