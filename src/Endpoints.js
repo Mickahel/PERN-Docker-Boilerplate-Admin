@@ -35,7 +35,7 @@ const Endpoints = {
 
   },
   pushNotification: {
-    sendToken: "/v1/app/pushNotification/:token", // ? POST
+    sendToken: "/v1/app/pushNotification/registerToken/:token", // ? POST
     sendPushNotification: "/v1/admin/pushNotification/sendNotification" // ? POST
   },
   logs: {
