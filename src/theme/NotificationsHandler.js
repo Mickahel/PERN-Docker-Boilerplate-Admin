@@ -39,14 +39,14 @@ function NotificationsHandler(props) {
           `${process.env.PUBLIC_URL}/service-worker.js`,
           {
             onUpdate: (registration) => {
-              console.log("onUpdate")
+              //console.log("onUpdate")
               let appUpdateEvent = new Event('app-update');
               window.dispatchEvent(appUpdateEvent);
 
               registration.waiting.postMessage({ type: 'SKIP_WAITING' })
             },
             onSuccess: function (registration) {
-              console.log("onSuccess")
+              //console.log("onSuccess")
               let appUpdateEvent = new Event('app-update');
               window.dispatchEvent(appUpdateEvent);
             }
@@ -76,7 +76,7 @@ function NotificationsHandler(props) {
 
         // Questo viene chiamato quando l'app è aperta
         messaging.onMessage(async payload => {
-          console.log('[FIREBASE MESSAGING] Message received', payload);
+          //console.log('[FIREBASE MESSAGING] Message received', payload);
           //const notificationTitle = event.notification.title;
           const serviceWorker = await navigator.serviceWorker.ready;
           serviceWorker.showNotification(payload.notification.title, payload.notification)
