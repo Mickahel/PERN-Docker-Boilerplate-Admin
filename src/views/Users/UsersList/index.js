@@ -106,7 +106,7 @@ function UsersList(props) {
                     headCells={headCells}
                     rows={rows}
                     readOnly={false}
-                    rowsPerPage={15}
+                    rowsPerPage={10}
                     dense={true}
                     buttons={[
                         {

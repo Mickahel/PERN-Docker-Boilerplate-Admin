@@ -120,8 +120,8 @@ function LogsList(props) {
                             id: "object"
                         }
                     ]}
-                />*
-                </Card>
+                />
+            </Card>
 
         </div>
     );

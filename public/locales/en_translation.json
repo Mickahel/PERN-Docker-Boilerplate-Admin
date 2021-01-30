@@ -28,6 +28,7 @@
 		"dashboard": "Dashboard"
 	},
 	"enhancedTable": {
+		"page": "Page",
 		"rows": "Rows",
 		"moreThan": "More than",
 		"of": "of",
@@ -103,7 +104,9 @@
 		"invalidField": "Invalid Field",
 		"required": "Required Field",
 		"email": "The field {{email}} should be an email",
-		"min": "Password Must Be At Least {{num}} Characters",
+		"minString": "The field {{path}} must be at least {{num}} characters",
+		"minNumber": "{{path}} must be greater than or equal to {{num}}",
+		"maxNumber": "{{path}} must be less than or equal to {{num}}",
 		"RefEqualTo": "{{path}} must be the same as {{reference}}",
 		"equalTo": "Fields Must Be The Same"
 	},
@@ -193,6 +196,7 @@
 		"createdSuccessfully": "Creato Successfully",
 		"sendActivationEmail": "Send Activation Email",
 		"sendLostPasswordEmail": "Send Email to Reset Password",
+		"lostPasswordEmailSent": "Password Reset Email Sent",
 		"updatedSuccesfully": "Updated Succesfully",
 		"status": "Status",
 		"firstname": "Firstname",

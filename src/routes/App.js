@@ -16,7 +16,7 @@ import RoundLoader from "components/RoundLoader";
 import { useHistory } from "react-router-dom";
 import useFetch from "hooks/useFetch";
 import NotificationsHandler from 'theme/NotificationsHandler'
-
+import roles from 'auxiliaries/roles'
 import Account from "./Account";
 import UsersManagementSystem from "./UsersManagementSystem"
 const ErrorNotFound = lazy(() => import("views/Placeholders/ErrorNotFound"));
@@ -25,6 +25,7 @@ const Home = lazy(() => import("views/Home"));
 const Dashboard = lazy(() => import("views/Dashboard"));
 const Logs = lazy(() => import("views/Logs"));
 const Database = lazy(() => import("views/Database"));
+const GDPR = lazy(() => import("views/GDPR"));
 
 function App(props) {
   const userContext = useContext(UserContext);
@@ -35,7 +36,7 @@ function App(props) {
 
   const isAdmin = (user) => {
     if (!user) return false;
-    return (user.role === 'ADMIN' || user.role === 'SUPERADMIN')
+    return roles.indexOf(user.role) > -1
   }
   useEffect(() => {
     checkUserIdentity();
@@ -92,6 +93,7 @@ function App(props) {
           <Route exact path="/feedbacks" component={Feedbacks} />
           <Route exact path="/logs" component={Logs} />
           <Route exact path="/database" component={Database} />
+          <Route exact path="/gdpr" component={GDPR} />
           <Route path="/account*" exact component={Account} />
           <Route exact path="/" component={Home} />
           <Route component={ErrorNotFound} />

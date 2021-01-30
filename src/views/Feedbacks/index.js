@@ -93,7 +93,7 @@ function Feedbacks(props) {
                 value: feedback.handled,
                 onClick: async () => {
                     await handleFeedback(feedback.id)
-                    themeContext.showSuccessSnackbar({ message: "feedback.changedHandleStatus" })
+                    themeContext.showSuccessSnackbar({ message: "feedbacks.changedHandleStatus" })
                     loadData()
                 },
             },

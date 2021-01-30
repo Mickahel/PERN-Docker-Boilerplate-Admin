@@ -4,6 +4,7 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 import GroupOutlinedIcon from '@material-ui/icons/GroupOutlined';
 import BugReportOutlinedIcon from '@material-ui/icons/BugReportOutlined';
 import StorageOutlinedIcon from '@material-ui/icons/StorageOutlined';
+import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
 const SidebarMenu = [
   {
     type: "item",
@@ -38,6 +39,13 @@ const SidebarMenu = [
     id: "Database",
     to: "/database",
     icon: <StorageOutlinedIcon />,
+    exact: true,
+  },
+  {
+    type: "item",
+    id: "GDPR",
+    to: "/gdpr",
+    icon: <GavelOutlinedIcon />,
     exact: true,
   },
 ];
