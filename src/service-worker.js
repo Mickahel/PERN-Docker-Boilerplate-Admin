@@ -112,9 +112,8 @@ self.addEventListener('message', (event) => {
 self.addEventListener('notificationclick', function (event) {
   //console.log('SW notification click event', event)
   const url = event?.notification?.data?.FCM_MSG?.notification?.data?.click_action || event?.notification?.data?.click_action;
-
-  if (url && url !== "") {
-    console.log(url)
+  console.log("URL: ", url)
+  if (url/* && url !== ""*/) {
     event.waitUntil(
       clients.matchAll({ type: 'window' }).then(windowClients => {
         // Check if there is already a window/tab open with the target URL
