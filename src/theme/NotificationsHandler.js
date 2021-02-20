@@ -76,7 +76,7 @@ function NotificationsHandler(props) {
 
         // Questo viene chiamato quando l'app è aperta
         messaging.onMessage(async payload => {
-          //console.log('[FIREBASE MESSAGING] Message received', payload);
+          console.log('[FIREBASE MESSAGING] Message received', payload);
           //const notificationTitle = event.notification.title;
           const serviceWorker = await navigator.serviceWorker.ready;
           serviceWorker.showNotification(payload.notification.title, payload.notification)
@@ -91,7 +91,6 @@ function NotificationsHandler(props) {
     try {
       const messaging = firebase.messaging();
       const token = await messaging.getToken();
-      console.log('Token:', token); // TODO REMOVE
       await fetch({
         silent: true,
         method: "POST",

@@ -4,6 +4,7 @@
 	"yes": "Si",
 	"somethingWentWrong": "Qualcosa è andato storto",
 	"validationError": "Errore nell'invio dei dati",
+	"youCantEnter": "Non puoi accedere",
 	"youAreNotAnAdministrator": "Non sei un amministratore",
 	"notificationHandler": {
 		"title": "Possiamo invarti delle notifiche?",
@@ -100,8 +101,10 @@
 		"information": "Informazioni",
 		"tablesSize": "Peso Tabelle"
 	},
+	"page": "Pagina",
 	"yup": {
 		"invalidField": "Campo non Valido",
+
 		"required": "Campo Obbligatorio",
 		"email": "Il campo {{email}} dovrebbe essere un'email",
 		"minString": "Il campo {{path}} deve essere lungo almeno {{num}} caratteri",

@@ -4,6 +4,7 @@
 	"yes": "Yes",
 	"somethingWentWrong": "Something Went Wrong",
 	"validationError": "Error sending data",
+	"youCantEnter": "You can't enter",
 	"youAreNotAnAdministrator": "You are not an administrator",
 	"notificationHandler": {
 		"title": "Can we Send You Notifications?",
@@ -100,6 +101,7 @@
 		"information": "Information",
 		"tablesSize": "Tables Size"
 	},
+	"page": "Pagina",
 	"yup": {
 		"invalidField": "Invalid Field",
 		"required": "Required Field",

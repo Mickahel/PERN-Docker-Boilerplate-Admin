@@ -18,6 +18,8 @@ import useFetch from "hooks/useFetch";
 import NotificationsHandler from 'theme/NotificationsHandler'
 import roles from 'auxiliaries/roles'
 import Account from "./Account";
+
+import { Trans } from "react-i18next";
 import UsersManagementSystem from "./UsersManagementSystem"
 const ErrorNotFound = lazy(() => import("views/Placeholders/ErrorNotFound"));
 const Feedbacks = lazy(() => import("views/Feedbacks"));
@@ -57,7 +59,8 @@ function App(props) {
 
       if (!isAdmin(data)) {
         themeContext.showWarningDialog({
-          message: "youAreNotAnAdministrator",
+          title: <Trans>youCantEnter</Trans>,
+          message: <Trans>youAreNotAnAdministrator</Trans>,
           onClose: async () => {
             try {
               await fetch({
