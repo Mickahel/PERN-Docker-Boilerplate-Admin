@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { EditorState, ContentState, convertToRaw, convertFromHTML } from 'draft-js'
-import htmlToDraft from 'html-to-draftjs'
 import draftToHtml from 'draftjs-to-html'
 
 import "./style.scss";

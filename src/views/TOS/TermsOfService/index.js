@@ -12,7 +12,7 @@ function TermsOfService(props) {
   const [t, i18n] = useTranslation();
   const { fetch, data, loading } = useFetch()
   const loadData = async () => {
-    const t = await fetch({
+    await fetch({
       method: "GET",
       name: "privacyPolicy",
       url: Endpoints.generalSettings.getGeneralSetting,
@@ -27,7 +27,7 @@ function TermsOfService(props) {
     <PublicAppBar title="tos.termsOfService">
       <Helmet title={`${config.name.short} - ${t("tos.termsOfService")}`} />
       <div id="termsOfService">
-        <div dangerouslySetInnerHTML={{ __html: data.value }} className='documentation-content' />
+        {data.value && <div dangerouslySetInnerHTML={{ __html: data.value }} className='documentation-content' />}
 
       </div>
     </PublicAppBar>
