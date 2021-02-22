@@ -6,6 +6,10 @@
 	"validationError": "Error sending data",
 	"youCantEnter": "You can't enter",
 	"youAreNotAnAdministrator": "You are not an administrator",
+	"gdpr": {
+		"privacyPolicyChangedSuccessfully": "Privacy Policy Changed Successfully",
+		"termsOfServiceChangedSuccessfully": "Terms Of Service Changed Successfully"
+	},
 	"notificationHandler": {
 		"title": "Can we Send You Notifications?",
 		"content": "The platform wants to send you notifications",

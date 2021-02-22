@@ -6,6 +6,10 @@
 	"validationError": "Errore nell'invio dei dati",
 	"youCantEnter": "Non puoi accedere",
 	"youAreNotAnAdministrator": "Non sei un amministratore",
+	"gdpr": {
+		"privacyPolicyChangedSuccessfully": "Informativa sulla privacy modificata con successo",
+		"termsOfServiceChangedSuccessfully": "Termini di servizio modificati con successo"
+	},
 	"notificationHandler": {
 		"title": "Possiamo invarti delle notifiche?",
 		"content": "La piattaforma vuole inviarti delle notifiche",

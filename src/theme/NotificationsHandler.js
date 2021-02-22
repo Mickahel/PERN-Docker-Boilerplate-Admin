@@ -10,6 +10,7 @@ import { ThemeContext } from 'contexts/Providers/ThemeProvider';
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import * as serviceWorkerRegistration from '../serviceWorkerRegistration';
+import { config } from '../configuration/config'
 
 function NotificationsHandler(props) {
   let { fetch } = useFetch()

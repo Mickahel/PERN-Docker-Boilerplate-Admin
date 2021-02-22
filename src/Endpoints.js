@@ -40,6 +40,10 @@ const Endpoints = {
   },
   logs: {
     getAll: "/v1/admin/logs/" // ? GET
+  },
+  generalSettings: {
+    editGeneralSetting: "/v1/admin/general-settings/", // ? PUT
+    getGeneralSetting: "v1/admin/general-settings/:feature"// ? GET
   }
 };
 

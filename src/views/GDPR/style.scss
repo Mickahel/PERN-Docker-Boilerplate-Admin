@@ -6,7 +6,22 @@
 #termsOfServiceBox {
 	margin-top: $itemMargin;
 }
-
+.lightThemeEditor {
+}
+.darkThemeEditor {
+	.rdw-editor-toolbar {
+		background-color: #424242;
+		color: black;
+		border-top: unset !important;
+		border-right: unset !important;
+		border-left: unset !important;
+		border-bottom: 1px solid #f1f1f1 imp !important;
+	}
+	.rdw-option-wrapper,
+	.rdw-dropdown-selectedtext {
+		background-color: #c1c1c1;
+	}
+}
 .editor-wrapper {
 	border: 1px #ccc solid;
 	border-radius: 5px;
@@ -29,6 +44,7 @@
 }*/
 
 .editor {
+	min-height: 20vh;
 	max-height: 50vh;
 }
 
