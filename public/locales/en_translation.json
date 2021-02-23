@@ -8,7 +8,7 @@
 	"youAreNotAnAdministrator": "You are not an administrator",
 	"gdpr": {
 		"privacyPolicyChangedSuccessfully": "Privacy Policy Changed Successfully",
-		"termsOfServiceChangedSuccessfully": "Terms Of Service Changed Successfully"
+		"termsAndConditionsChangedSuccessfully": "Terms and Conditions Changed Successfully"
 	},
 	"notificationHandler": {
 		"title": "Can we Send You Notifications?",
@@ -171,7 +171,7 @@
 		"goToApp": "Go To App"
 	},
 	"tos": {
-		"termsOfService": "Terms of Service"
+		"termsAndConditions": "Terms and Conditions"
 	},
 	"logs": {
 		"logs": "Logs",

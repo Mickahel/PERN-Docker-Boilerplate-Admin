@@ -19,28 +19,28 @@ import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
 function GDPR(props) {
     const themeContext = useContext(ThemeContext)
     const { fetch: privacyPolicyFetch } = useFetch();
-    const { fetch: termsOfServiceFetch } = useFetch();
+    const { fetch: termsAndConditionsFetch } = useFetch();
     const { loading, data: fetchedData, fetchAll } = useFetch();
 
     const loadData = async () => {
         const t = await fetchAll([{
             method: "GET",
             name: "privacyPolicy",
-            url: Endpoints.generalSettings.getGeneralSetting,
+            url: Endpoints.tos.getGeneralSetting,
             urlParams: {
                 feature: "privacyPolicy"
             }
         }, {
             method: "GET",
-            name: "termsOfService",
+            name: "termsAndConditions",
             url: Endpoints.generalSettings.getGeneralSetting,
             urlParams: {
-                feature: "termsOfService"
+                feature: "termsAndConditions"
             }
         }])
 
         formikPrivacyPolicy.setFieldValue("privacyPolicy", convertToDraft(t?.data?.privacyPolicy?.value))
-        formikTermsOfService.setFieldValue("termsOfService", convertToDraft(t?.data?.termsOfService?.value))
+        formiktermsAndConditions.setFieldValue("termsAndConditions", convertToDraft(t?.data?.termsAndConditions?.value))
 
     }
     useEffect(() => {
@@ -73,22 +73,22 @@ function GDPR(props) {
         }
     )
 
-    const formikTermsOfService = useFormik(
+    const formiktermsAndConditions = useFormik(
         {
             initialValues: {
-                termsOfService: ""
+                termsAndConditions: ""
             },
             onSubmit: async (values) => {
                 try {
-                    await termsOfServiceFetch({
+                    await termsAndConditionsFetch({
                         method: "PUT",
                         url: Endpoints.generalSettings.editGeneralSetting,
                         data: {
-                            feature: "termsOfService",
-                            value: convertFromDraft(values.termsOfService)
+                            feature: "termsAndConditions",
+                            value: convertFromDraft(values.termsAndConditions)
                         }
                     });
-                    themeContext.showSuccessSnackbar({ message: "gdpr.termsOfServiceChangedSuccessfully" })
+                    themeContext.showSuccessSnackbar({ message: "gdpr.termsAndConditionsChangedSuccessfully" })
                 } catch (e) {
 
                 }
@@ -122,22 +122,22 @@ function GDPR(props) {
                 </form>
             </Card>
             <Card id="termsAndConditionseBox">
-                <CardHeader title={<Trans>tos.termsOfService</Trans>} />
-                <form onSubmit={formikTermsOfService.handleSubmit}>
+                <CardHeader title={<Trans>tos.termsAndConditions</Trans>} />
+                <form onSubmit={formiktermsAndConditions.handleSubmit}>
                     <CardContent>
                         <EditorWYSIWYG
-                            disabled={formikTermsOfService.isSubmitting}
+                            disabled={formiktermsAndConditions.isSubmitting}
                             wrapperClassName={classnames("editor-wrapper", props.wrapperClassName)}
                             editorClassName={classnames("editor", props.editorClassName)}
-                            editorState={formikTermsOfService.values.termsOfService}
-                            onEditorStateChange={(editorState) => { formikTermsOfService.setFieldValue("termsOfService", editorState) }}
+                            editorState={formiktermsAndConditions.values.termsAndConditions}
+                            onEditorStateChange={(editorState) => { formiktermsAndConditions.setFieldValue("termsAndConditions", editorState) }}
                         />
                     </CardContent>
                     <CardActions>
                         <Button
                             color="primary"
                             type="submit"
-                            disabled={formikTermsOfService.isSubmitting}
+                            disabled={formiktermsAndConditions.isSubmitting}
                         >
                             <Trans>save</Trans>
                         </Button>

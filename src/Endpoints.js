@@ -43,7 +43,11 @@ const Endpoints = {
   },
   generalSettings: {
     editGeneralSetting: "/v1/admin/general-settings/", // ? PUT
-    getGeneralSetting: "v1/app/general-settings/:feature"// ? GET
+    getGeneralSetting: "/v1/admin/general-settings/:feature"// ? GET
+  },
+  tos: {
+    getPrivacyPolicy: "/v1/app/gdpr/privacy-policy",
+    getTermsAndConditions: "/v1/app/gdpr/terms-and-conditions"
   }
 };
 

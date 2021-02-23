@@ -8,7 +8,7 @@
 	"youAreNotAnAdministrator": "Non sei un amministratore",
 	"gdpr": {
 		"privacyPolicyChangedSuccessfully": "Informativa sulla privacy modificata con successo",
-		"termsOfServiceChangedSuccessfully": "Termini di servizio modificati con successo"
+		"termsAndConditionsChangedSuccessfully": "Termini e Condizioni modificati con successo"
 	},
 	"notificationHandler": {
 		"title": "Possiamo invarti delle notifiche?",
@@ -172,7 +172,7 @@
 		"goToApp": "Accedi all'App"
 	},
 	"tos": {
-		"termsOfService": "Termini e Condizioni d'Uso"
+		"termsAndConditions": "Termini e Condizioni d'Uso"
 	},
 	"logs": {
 		"details": "Dettagli",
