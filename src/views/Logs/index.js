@@ -90,12 +90,13 @@ function LogsList(props) {
             }
         }
     }).reverse()
+
     return (
         <div className="flex flex-col">
             <TopBoxes
                 startDate={data.startDate}
                 endDate={data.endDate}
-                amountOfDataKept={data.keep.amount}
+                amountOfDataKept={data?.keep?.amount}
             />
             <Card id="logsTable">
                 <EnhancedTable

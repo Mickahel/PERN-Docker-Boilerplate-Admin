@@ -48,7 +48,7 @@ function Feedback(props) {
   const feedbackForm = useFormik({
     initialValues: {
       type: "BUG",
-      includeScreenshot: true,
+      includeScreenshot: false,
     },
     onSubmit: async (values, formikBag) => {
       /*      if (_.isEmpty(values.feedback) && !values.includeScreenshot) {
@@ -68,14 +68,13 @@ function Feedback(props) {
             lastModified: Date.now(),
           });
         }
-
         await fetch({
           url: Endpoints.feedback.sendNew,
           method: "POST",
           data: {
             description: values.description,
             type: values.type,
-            path: window.location,
+            path: window.location.href,
             createdBy: userContext.user.id
           },
           file,
