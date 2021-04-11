@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { EditorState, ContentState, convertToRaw, convertFromHTML } from 'draft-js'
 import draftToHtml from 'draftjs-to-html'
-
 import "./style.scss";
 import { Card, CardContent, Button, CardHeader } from "@material-ui/core";
 import { Trans } from "react-i18next";
@@ -23,22 +22,23 @@ function GDPR(props) {
     const { loading, data: fetchedData, fetchAll } = useFetch();
 
     const loadData = async () => {
-        const t = await fetchAll([{
-            method: "GET",
-            name: "privacyPolicy",
-            url: Endpoints.tos.getGeneralSetting,
-            urlParams: {
-                feature: "privacyPolicy"
-            }
-        }, {
-            method: "GET",
-            name: "termsAndConditions",
-            url: Endpoints.generalSettings.getGeneralSetting,
-            urlParams: {
-                feature: "termsAndConditions"
-            }
-        }])
-
+        const t = await fetchAll([
+            {
+                method: "GET",
+                name: "privacyPolicy",
+                url: Endpoints.generalSettings.getGeneralSetting,
+                urlParams: {
+                    feature: "privacyPolicy"
+                }
+            },
+            {
+                method: "GET",
+                name: "termsAndConditions",
+                url: Endpoints.generalSettings.getGeneralSetting,
+                urlParams: {
+                    feature: "termsAndConditions"
+                }
+            }])
         formikPrivacyPolicy.setFieldValue("privacyPolicy", convertToDraft(t?.data?.privacyPolicy?.value))
         formiktermsAndConditions.setFieldValue("termsAndConditions", convertToDraft(t?.data?.termsAndConditions?.value))
 

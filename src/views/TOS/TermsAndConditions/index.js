@@ -25,7 +25,6 @@ function TermsAndConditions(props) {
       <Helmet title={`${config.name.short} - ${t("tos.termsAndConditions")}`} />
       <div id="termsAndConditions">
         {data?.value && <div dangerouslySetInnerHTML={{ __html: data?.value }} className='documentation-content' />}
-
       </div>
     </PublicAppBar>
   );

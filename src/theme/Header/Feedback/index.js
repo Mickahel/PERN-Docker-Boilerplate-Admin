@@ -48,7 +48,7 @@ function Feedback(props) {
   const feedbackForm = useFormik({
     initialValues: {
       type: "BUG",
-      includeScreenshot: false,
+      includeScreenshot: true,
     },
     onSubmit: async (values, formikBag) => {
       /*      if (_.isEmpty(values.feedback) && !values.includeScreenshot) {

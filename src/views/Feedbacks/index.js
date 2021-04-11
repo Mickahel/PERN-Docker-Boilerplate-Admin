@@ -152,6 +152,7 @@ function Feedbacks(props) {
                             },
                             activateOnSingleSelection: true,
                             activateOnMultipleSelection: false,
+                            deselectCheckedOnClick: true
                         }
                     ]}
                 />

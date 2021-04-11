@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, Button } from "@material-ui/core";
+import { Card, CardContent, CardHeader, Button, CircularProgress } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -63,7 +63,7 @@ function UploadProfileImageBox(props) {
               )}
             </div>
           </div>
-          <div className="mt-4 mb-2 flex justify-center">
+          <div className="mt-4 mb-2 flex flex-col justify-center">
             <Button color="primary" variant="outlined" component="label">
               <input
                 accept="image/*"
